@@ -3,76 +3,87 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>George's Heavy Equipment — Built for the Job</title>
+<title>CANVAC Trucks &amp; Equipment — Canadian Vacuum Trucks</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --yellow:#f5a800; --yellow-dark:#d98f00; --orange:#e06000;
-  --steel:#1c1f22; --steel-2:#23272b; --steel-3:#2d3238; --steel-4:#383e46;
-  --concrete:#4a5058; --muted:#8a9099; --offwhite:#f0ece5; --white:#fafaf8;
+  --red: #cc2020;
+  --red-dark: #a81a1a;
+  --red-light: #e63030;
+  --steel: #141618;
+  --steel-2: #1c1f22;
+  --steel-3: #252a2e;
+  --steel-4: #303740;
+  --concrete: #4a5058;
+  --muted: #8a9099;
+  --offwhite: #f0ece5;
+  --white: #fafaf8;
+  --maple: #cc2020;
 }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--steel);color:var(--white);font-family:'Source Sans 3',sans-serif;font-weight:400;overflow-x:hidden}
+body{background:var(--steel-2);color:var(--white);font-family:'Source Sans 3',sans-serif;font-weight:400;overflow-x:hidden}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;width:100%;z-index:200;display:flex;align-items:stretch;background:var(--steel);border-bottom:3px solid var(--yellow);min-height:58px;animation:slideDown .6s ease forwards}
-.nav-brand{display:flex;align-items:center;padding:0 2.8rem 0 1.2rem;background:var(--yellow);clip-path:polygon(0 0,100% 0,90% 100%,0 100%);text-decoration:none;flex-shrink:0;gap:.5rem}
-.nav-brand-icon{font-size:1.5rem}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;width:100%;z-index:200;display:flex;align-items:stretch;background:var(--steel);border-bottom:3px solid var(--red);min-height:60px;transition:box-shadow .3s}
+.nav-brand{display:flex;align-items:center;padding:0 2.8rem 0 1.2rem;background:var(--red);clip-path:polygon(0 0,100% 0,90% 100%,0 100%);text-decoration:none;flex-shrink:0;gap:.5rem}
+.nav-brand-icon{font-size:1.6rem}
 .nav-brand-text{display:flex;flex-direction:column;line-height:1}
-.nav-brand-text .top{font-family:'Oswald',sans-serif;font-size:.55rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.55)}
-.nav-brand-text .name{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--steel)}
+.nav-brand-text .top{font-family:'Oswald',sans-serif;font-size:.52rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.nav-brand-text .name{font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff}
 .nav-links{display:flex;align-items:center;list-style:none;padding:0 .5rem}
 .nav-links a{display:block;padding:1rem 1.1rem;font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;border-bottom:3px solid transparent;margin-bottom:-3px}
-.nav-links a:hover{color:var(--yellow);border-bottom-color:var(--yellow)}
+.nav-links a:hover{color:var(--red);border-bottom-color:var(--red)}
 .nav-right{display:flex;align-items:center;gap:1rem;margin-left:auto;padding:0 1.5rem}
-.nav-phone{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:600;color:var(--yellow);text-decoration:none;white-space:nowrap}
-.nav-quote{background:var(--yellow);color:var(--steel);padding:.5rem 1.2rem;font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);white-space:nowrap}
-.nav-quote:hover{background:var(--yellow-dark)}
+.nav-phone{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:600;color:var(--red);text-decoration:none;white-space:nowrap}
+.nav-cta{background:var(--red);color:#fff;padding:.5rem 1.3rem;font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);white-space:nowrap}
+.nav-cta:hover{background:var(--red-dark)}
 
 /* HAMBURGER */
 .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:1rem;margin-left:auto;z-index:400;flex-shrink:0}
-.nav-hamburger span{display:block;width:22px;height:2px;background:var(--yellow);transition:all .28s ease;transform-origin:center}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--red);transition:all .28s ease;transform-origin:center}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* MOBILE DRAWER */
-.mobile-nav{position:fixed;top:0;left:0;width:min(320px,85vw);bottom:0;background:var(--steel-2);z-index:350;display:flex;flex-direction:column;padding:5rem 2rem 2rem;transform:translateX(-100%);transition:transform .32s cubic-bezier(.4,0,.2,1);pointer-events:none;border-right:3px solid var(--yellow);overflow-y:auto}
+.mobile-nav{position:fixed;top:0;left:0;width:min(320px,85vw);bottom:0;background:var(--steel);z-index:350;display:flex;flex-direction:column;padding:5rem 2rem 2rem;transform:translateX(-100%);transition:transform .32s cubic-bezier(.4,0,.2,1);pointer-events:none;border-right:3px solid var(--red);overflow-y:auto}
 .mobile-nav.open{transform:translateX(0);pointer-events:all}
-.mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:340;opacity:0;pointer-events:none;transition:opacity .32s}
+.mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:340;opacity:0;pointer-events:none;transition:opacity .32s}
 .mob-overlay.open{opacity:1;pointer-events:all}
 .mobile-nav a{display:block;padding:1rem 0;font-family:'Oswald',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--white);text-decoration:none;border-bottom:1px solid var(--steel-4);transition:color .15s,padding-left .15s}
-.mobile-nav a:hover,.mobile-nav a:active{color:var(--yellow);padding-left:.5rem}
-.mob-nav-cta{margin-top:auto;display:flex;flex-direction:column;gap:.8rem;padding-top:2rem}
-.mob-phone{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:var(--yellow);border:none;padding:.4rem 0}
-.mob-quote-btn{background:var(--yellow);color:var(--steel);border:none;padding:1rem;width:100%;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.mobile-nav a:hover,.mobile-nav a:active{color:var(--red);padding-left:.5rem}
+.mob-cta-wrap{margin-top:auto;display:flex;flex-direction:column;gap:.8rem;padding-top:2rem}
+.mob-phone-link{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:var(--red);border:none;padding:.4rem 0;text-decoration:none}
+.mob-quote-btn{background:var(--red);color:#fff;border:none;padding:1rem;width:100%;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.mob-quote-btn:hover{background:var(--red-dark)}
 
 /* MOBILE CALL BAR */
 .mobile-callbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:190;grid-template-columns:1fr 1fr}
-.mobile-callbar a,.mobile-callbar button{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.95rem;font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;background:var(--yellow);color:var(--steel)}
-.mobile-callbar button{background:var(--steel);color:var(--yellow);border-left:2px solid rgba(245,168,0,.3)}
+.mobile-callbar a,.mobile-callbar button{display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.95rem;font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;background:var(--red);color:#fff}
+.mobile-callbar button{background:var(--steel);color:var(--red);border-left:2px solid rgba(204,32,32,.3)}
 
-/* HERO */
+/* ── HERO ── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:7rem 5rem 5rem;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:0;background:var(--steel-2)}
-.hero-bg::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(245,168,0,.02) 40px,rgba(245,168,0,.02) 41px)}
-.hero-bg::after{content:'';position:absolute;right:0;top:0;width:52%;height:100%;background:linear-gradient(135deg,var(--steel-3) 0%,var(--steel-2) 100%);clip-path:polygon(8% 0,100% 0,100% 100%,0 100%)}
+.hero-bg{position:absolute;inset:0;z-index:0;background:var(--steel)}
+.hero-bg::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(204,32,32,.018) 40px,rgba(204,32,32,.018) 41px)}
+.hero-bg::after{content:'';position:absolute;right:0;top:0;width:52%;height:100%;background:linear-gradient(135deg,var(--steel-2) 0%,var(--steel) 100%);clip-path:polygon(8% 0,100% 0,100% 100%,0 100%)}
 .hero-img{position:absolute;right:0;top:0;width:52%;height:100%;z-index:1;clip-path:polygon(8% 0,100% 0,100% 100%,0 100%);overflow:hidden}
-.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.38;filter:grayscale(15%)}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.32;filter:grayscale(20%)}
 .hero-content{position:relative;z-index:2;max-width:680px}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.5rem;animation:fadeLeft .7s ease .1s both}
-.hero-eyebrow-line{width:36px;height:3px;background:var(--yellow)}
-.hero-eyebrow span{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--yellow)}
+.hero-eyebrow-line{width:36px;height:3px;background:var(--red)}
+.hero-eyebrow span{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--red)}
 .hero-title{font-family:'Oswald',sans-serif;font-size:clamp(3rem,7vw,7rem);font-weight:700;line-height:.95;text-transform:uppercase;animation:fadeLeft .7s ease .2s both}
-.hero-title .yellow{color:var(--yellow);display:block}
-.hero-title .outline{-webkit-text-stroke:2px rgba(255,255,255,.15);color:transparent;display:block}
-.hero-desc{margin-top:1.4rem;max-width:460px;color:var(--muted);line-height:1.8;font-size:1rem;animation:fadeLeft .7s ease .35s both}
+.hero-title .accent{color:var(--red);display:block}
+.hero-title .outline{-webkit-text-stroke:2px rgba(255,255,255,.12);color:transparent;display:block}
+.hero-desc{margin-top:1.4rem;max-width:480px;color:var(--muted);line-height:1.8;font-size:1rem;animation:fadeLeft .7s ease .35s both}
 .hero-actions{display:flex;gap:1rem;margin-top:2.2rem;flex-wrap:wrap;animation:fadeLeft .7s ease .5s both}
-.btn-yellow{background:var(--yellow);color:var(--steel);padding:.9rem 2.2rem;border:none;font-family:'Oswald',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;clip-path:polygon(4% 0,100% 0,96% 100%,0 100%)}
-.btn-yellow:hover{background:var(--yellow-dark);transform:translateY(-2px)}
+.btn-red{background:var(--red);color:#fff;padding:.9rem 2.2rem;border:none;font-family:'Oswald',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;clip-path:polygon(4% 0,100% 0,96% 100%,0 100%)}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-2px)}
 .btn-outline{background:transparent;color:var(--white);padding:.9rem 2.2rem;border:2px solid var(--steel-4);font-family:'Oswald',sans-serif;font-size:.88rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s}
-.btn-outline:hover{border-color:var(--yellow);color:var(--yellow)}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
 .hero-badges{display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;animation:fadeLeft .7s ease .65s both}
 .hero-badge-item{display:flex;align-items:center;gap:.55rem}
 .badge-icon{font-size:1.3rem}
@@ -80,217 +91,176 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:200;display:flex;align-items:
 .badge-text strong{display:block;color:var(--white);font-size:.88rem}
 
 /* TICKER */
-.ticker{background:var(--yellow);overflow:hidden;padding:.65rem 0;white-space:nowrap}
-.ticker-inner{display:inline-block;animation:ticker 32s linear infinite;font-family:'Oswald',sans-serif;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+.ticker{background:var(--red);overflow:hidden;padding:.65rem 0;white-space:nowrap}
+.ticker-inner{display:inline-block;animation:ticker 30s linear infinite;font-family:'Oswald',sans-serif;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#fff}
 .ticker-inner span{margin:0 2rem}
-.t-dot{color:rgba(0,0,0,.3);margin:0 .5rem}
+.t-dot{color:rgba(255,255,255,.4);margin:0 .5rem}
+
+/* STATS BAR */
+.stats-bar{background:var(--steel-3);border-top:1px solid rgba(204,32,32,.2);border-bottom:1px solid rgba(204,32,32,.2);display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.stat-item{padding:1.8rem 1rem;border-right:1px solid var(--steel-4)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Oswald',sans-serif;font-size:2.2rem;font-weight:700;color:var(--red);line-height:1}
+.stat-label{font-size:.68rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:.3rem}
 
 /* SHARED */
 .section-label{display:flex;align-items:center;gap:.7rem;margin-bottom:.6rem}
-.section-label::before{content:'';display:block;width:4px;height:20px;background:var(--yellow)}
-.section-label span{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--yellow)}
+.section-label::before{content:'';display:block;width:4px;height:20px;background:var(--red)}
+.section-label span{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
 .section-title{font-family:'Oswald',sans-serif;font-size:clamp(1.7rem,3vw,2.6rem);font-weight:700;text-transform:uppercase;line-height:1.1}
-.section-title em{color:var(--yellow);font-style:normal}
+.section-title em{color:var(--red);font-style:normal}
 
-/* STATS */
-.stats-bar{background:var(--steel-3);border-top:1px solid rgba(245,168,0,.15);border-bottom:1px solid rgba(245,168,0,.15);display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
-.stat-item{padding:1.8rem 1rem;border-right:1px solid var(--steel-4)}
-.stat-item:last-child{border-right:none}
-.stat-num{font-family:'Oswald',sans-serif;font-size:2.2rem;font-weight:700;color:var(--yellow);line-height:1}
-.stat-label{font-size:.68rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:.3rem}
+/* ANNOUNCEMENT BANNER */
+.announce{background:var(--steel-2);padding:4rem 5rem;border-bottom:1px solid var(--steel-4)}
+.announce-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:start}
+.announce-label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(204,32,32,.1);border:1px solid rgba(204,32,32,.3);padding:.35rem .9rem;margin-bottom:1.2rem;font-family:'Oswald',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.announce h2{font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;text-transform:uppercase;margin-bottom:1rem;line-height:1.1}
+.announce h2 em{color:var(--red);font-style:normal}
+.announce p{color:var(--muted);line-height:1.85;font-size:.92rem;margin-bottom:1rem}
+.announce p strong{color:var(--white)}
+.announce-contacts{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem;padding:1.2rem 1.4rem;background:var(--steel-3);border-left:3px solid var(--red)}
+.contact-person{display:flex;flex-direction:column;gap:.15rem}
+.contact-person .person-name{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white)}
+.contact-person .person-phone{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:var(--red);text-decoration:none}
+.contact-person .person-phone:hover{color:var(--red-light)}
+.announce-cusco{background:var(--steel-3);padding:1.5rem;border:1px solid var(--steel-4);border-top:2px solid var(--red)}
+.announce-cusco h3{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;letter-spacing:.08em}
+.announce-cusco p{font-size:.85rem;color:var(--muted);line-height:1.75}
+.announce-cusco p strong{color:var(--white)}
 
 /* CATEGORIES */
-.categories{padding:5rem;background:var(--steel-2)}
-.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--steel-4);margin-top:2.5rem}
-.cat-card{background:var(--steel-3);cursor:pointer;transition:background .2s;position:relative;overflow:hidden}
-.cat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.cat-card:hover{background:var(--steel-4)}
+.categories{padding:5rem;background:var(--steel)}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--steel-4);margin-top:2.5rem}
+.cat-card{background:var(--steel-2);cursor:pointer;transition:background .2s;position:relative;overflow:hidden}
+.cat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.cat-card:hover{background:var(--steel-3)}
 .cat-card:hover::after{transform:scaleX(1)}
-.cat-img{width:100%;height:120px;object-fit:cover;display:block;opacity:.6;transition:opacity .3s;filter:grayscale(25%)}
+.cat-img{width:100%;height:140px;object-fit:cover;display:block;opacity:.55;transition:opacity .3s;filter:grayscale(20%)}
 .cat-card:hover .cat-img{opacity:.85}
-.cat-info{padding:.9rem .8rem 1.1rem;text-align:center}
-.cat-name{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase}
-.cat-count{font-size:.66rem;color:var(--muted);margin-top:.2rem}
+.cat-info{padding:1rem;text-align:center}
+.cat-name{font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:700;text-transform:uppercase}
+.cat-desc{font-size:.7rem;color:var(--muted);margin-top:.3rem}
 
 /* INVENTORY */
-.inventory{padding:5rem;background:var(--steel)}
+.inventory{padding:5rem;background:var(--steel-2)}
 .inv-toolbar{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.2rem}
 .filter-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
 .filter-btn{background:var(--steel-3);color:var(--muted);border:1px solid var(--steel-4);padding:.4rem 1rem;font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s}
-.filter-btn.active,.filter-btn:hover{background:var(--yellow);color:var(--steel);border-color:var(--yellow)}
+.filter-btn.active,.filter-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
 
-/* EQUIPMENT GRID — masonry-style */
-.equip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--steel-4)}
-.equip-card{background:var(--steel-2);cursor:pointer;transition:background .2s;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.equip-card:hover{background:var(--steel-3)}
-.equip-card.wide{grid-column:span 2}
-.eq-badge{position:absolute;top:0;left:0;z-index:2;font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .9rem;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
-.eq-badge-featured{background:var(--yellow);color:var(--steel)}
-.eq-badge-reduced{background:var(--orange);color:#fff}
-.eq-badge-rental{background:transparent;color:var(--yellow);border:1px solid var(--yellow);clip-path:none;font-size:.58rem}
-.eq-badge-new{background:var(--steel-4);color:var(--white);clip-path:none}
-.eq-img-wrap{overflow:hidden;position:relative;flex-shrink:0}
-.eq-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to top,var(--steel-2),transparent)}
-.eq-img{width:100%;height:210px;object-fit:cover;display:block;transition:transform .4s,opacity .3s;filter:grayscale(10%)}
-.equip-card.wide .eq-img{height:260px}
-.equip-card:hover .eq-img{transform:scale(1.04);opacity:.88}
-.eq-body{padding:1.2rem 1.4rem 1.4rem;display:flex;flex-direction:column;flex:1}
-.eq-type{font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:.25rem}
-.eq-name{font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:700;text-transform:uppercase;line-height:1.1;margin-bottom:.9rem}
-.equip-card.wide .eq-name{font-size:1.45rem}
+.truck-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--steel-4)}
+.truck-card{background:var(--steel);cursor:pointer;transition:background .2s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.truck-card:hover{background:var(--steel-3)}
+.truck-card.span2{grid-column:span 2}
+.truck-badge{position:absolute;top:0;left:0;z-index:2;font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .9rem;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
+.badge-new{background:var(--red);color:#fff}
+.badge-soon{background:var(--steel-4);color:var(--white);clip-path:none}
+.badge-sold{background:#555;color:var(--muted);clip-path:none}
+.badge-used{background:rgba(204,32,32,.15);color:var(--red);border:1px solid var(--red);clip-path:none;font-size:.58rem}
+.truck-img-wrap{overflow:hidden;position:relative;flex-shrink:0}
+.truck-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,var(--steel),transparent)}
+.truck-img{width:100%;height:200px;object-fit:cover;display:block;transition:transform .4s,opacity .3s;filter:grayscale(10%)}
+.truck-card.span2 .truck-img{height:240px}
+.truck-card:hover .truck-img{transform:scale(1.04);opacity:.88}
+.truck-body{padding:1.1rem 1.3rem 1.3rem;display:flex;flex-direction:column;flex:1}
+.truck-type{font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.25rem}
+.truck-name{font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;text-transform:uppercase;line-height:1.1;margin-bottom:.8rem}
+.truck-card.span2 .truck-name{font-size:1.35rem}
+.truck-footer{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap;margin-top:auto;padding-top:.8rem;border-top:1px solid var(--steel-4)}
+.truck-btn{background:var(--red);color:#fff;border:none;padding:.5rem 1rem;font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;white-space:nowrap}
+.truck-btn:hover{background:var(--red-dark)}
+.truck-btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--steel-4);padding:.5rem .9rem;font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap}
+.truck-btn-ghost:hover{border-color:var(--red);color:var(--red)}
 
-/* Spec table */
-.eq-specs{border:1px solid var(--steel-4);margin-bottom:1.1rem;display:grid;grid-template-columns:repeat(3,1fr)}
-.eq-spec{padding:.5rem .65rem;border-right:1px solid var(--steel-4)}
-.eq-spec:last-child{border-right:none}
-.eq-spec label{display:block;color:var(--muted);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.1rem}
-.eq-spec value{font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:600}
+/* ABOUT STRIP */
+.about-strip{background:var(--red);padding:4rem 5rem}
+.about-strip .section-label::before{background:#fff}
+.about-strip .section-label span{color:rgba(255,255,255,.7)}
+.about-strip .section-title{color:#fff}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2.5rem;background:rgba(255,255,255,.2)}
+.about-card{background:rgba(0,0,0,.1);padding:2rem 1.8rem;transition:background .2s}
+.about-card:hover{background:rgba(0,0,0,.18)}
+.about-icon{font-size:2rem;display:block;margin-bottom:.9rem}
+.about-card-title{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:.4rem}
+.about-card-desc{font-size:.85rem;color:rgba(255,255,255,.75);line-height:1.75}
 
-/* Full spec panel (hidden by default) */
-.eq-full-specs{display:none;background:var(--steel-4);border-top:2px solid var(--yellow);padding:1rem 1.4rem}
-.eq-full-specs.open{display:block}
-.eq-full-specs h4{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--yellow);margin-bottom:.8rem}
-.eq-spec-table{display:grid;grid-template-columns:repeat(2,1fr);gap:.3rem .8rem}
-.eq-spec-row{display:flex;justify-content:space-between;font-size:.78rem;padding:.3rem 0;border-bottom:1px solid var(--steel-3)}
-.eq-spec-row span:first-child{color:var(--muted)}
-.eq-spec-row span:last-child{font-weight:600;text-align:right}
-
-.eq-footer{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap;margin-top:auto}
-.eq-price{font-family:'Oswald',sans-serif;font-size:1.3rem;font-weight:700;color:var(--yellow)}
-.eq-price small{font-size:.66rem;color:var(--muted);font-family:'Source Sans 3',sans-serif;font-weight:300;display:block;margin-top:-2px}
-.eq-actions{display:flex;gap:.5rem}
-.eq-btn{background:var(--yellow);color:var(--steel);border:none;padding:.5rem 1rem;font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;white-space:nowrap}
-.eq-btn:hover{background:var(--yellow-dark)}
-.eq-btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--steel-4);padding:.5rem .9rem;font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap}
-.eq-btn-ghost:hover,.eq-btn-ghost.active{border-color:var(--yellow);color:var(--yellow)}
-
-/* FEATURED DETAIL */
-.featured{background:var(--steel-3);padding:5rem;border-top:3px solid var(--yellow)}
-.featured-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
-.featured-img-wrap{position:relative;overflow:hidden}
-.featured-img{width:100%;height:440px;object-fit:cover;display:block;filter:grayscale(10%)}
-.featured-img-badge{position:absolute;top:1.2rem;left:0;background:var(--yellow);color:var(--steel);font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.4rem 1.1rem .4rem .8rem;clip-path:polygon(0 0,100% 0,92% 100%,0 100%)}
-.featured-badge-label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,168,0,.1);border:1px solid rgba(245,168,0,.3);padding:.35rem .9rem;margin-bottom:1.2rem;font-family:'Oswald',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow)}
-.featured-name{font-family:'Oswald',sans-serif;font-size:clamp(1.6rem,3vw,2.5rem);font-weight:700;text-transform:uppercase;line-height:1.05;margin-bottom:.5rem}
-.featured-sub{color:var(--muted);font-size:.88rem;margin-bottom:1.5rem;line-height:1.7}
-.feat-spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-bottom:1.8rem}
-.feat-spec-box{background:var(--steel-2);padding:.9rem 1rem;border-left:3px solid var(--yellow)}
-.feat-spec-box label{display:block;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
-.feat-spec-box value{font-family:'Oswald',sans-serif;font-size:1.25rem;font-weight:700}
-.feat-full-table{background:var(--steel-2);border:1px solid var(--steel-4);margin-bottom:1.8rem}
-.feat-full-table h4{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--yellow);padding:.8rem 1rem;border-bottom:1px solid var(--steel-4)}
-.feat-table-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.feat-table-row{display:flex;justify-content:space-between;font-size:.8rem;padding:.5rem 1rem;border-bottom:1px solid var(--steel-4)}
-.feat-table-row:last-child{border-bottom:none}
-.feat-table-row span:first-child{color:var(--muted)}
-.feat-table-row span:last-child{font-weight:600}
-.feat-price-wrap{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem}
-.feat-price{font-family:'Oswald',sans-serif;font-size:2.2rem;font-weight:700;color:var(--yellow)}
-.feat-price-note{color:var(--muted);font-size:.82rem}
-
-/* WHY */
-.why{background:var(--steel-2);padding:5rem}
-.why-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center;margin-top:2.5rem}
-.why-img-wrap{position:relative}
-.why-img{width:100%;height:420px;object-fit:cover;display:block;border-left:4px solid var(--yellow);filter:grayscale(10%)}
-.why-corner{position:absolute;bottom:-1.2rem;right:-1.2rem;background:var(--yellow);color:var(--steel);padding:1.1rem 1.4rem;text-align:center}
-.why-corner .num{font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;display:block;line-height:1}
-.why-corner .lbl{font-family:'Oswald',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase}
-.why-points{display:flex;flex-direction:column;gap:1.6rem}
-.why-point{display:flex;gap:1.1rem;align-items:flex-start;padding-bottom:1.6rem;border-bottom:1px solid var(--steel-4)}
-.why-point:last-child{border-bottom:none;padding-bottom:0}
-.why-num{font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:700;color:var(--yellow);opacity:.25;line-height:1;flex-shrink:0;min-width:1.8rem}
-.why-title{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
-.why-desc{font-size:.86rem;color:var(--muted);line-height:1.75}
-
-/* SERVICES */
-.services{background:var(--yellow);padding:4rem 5rem}
-.services .section-label::before{background:var(--steel)}
-.services .section-label span{color:rgba(0,0,0,.55)}
-.services .section-title{color:var(--steel)}
-.srv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:2.5rem;background:rgba(0,0,0,.15)}
-.srv{background:rgba(0,0,0,.06);padding:1.8rem 1.5rem;transition:background .2s}
-.srv:hover{background:rgba(0,0,0,.12)}
-.srv-icon{font-size:1.9rem;display:block;margin-bottom:.9rem}
-.srv-title{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:700;text-transform:uppercase;color:var(--steel);margin-bottom:.4rem}
-.srv-desc{font-size:.82rem;color:rgba(0,0,0,.58);line-height:1.7}
-
-/* BRANDS */
-.brands{background:var(--steel-3);padding:2.8rem 5rem}
-.brands-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
-.brands-label{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-.brands-list{display:flex;gap:2rem;flex-wrap:wrap;align-items:center}
-.brand-name{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--concrete);transition:color .2s;cursor:default}
-.brand-name:hover{color:var(--yellow)}
+/* FINANCING */
+.financing{background:var(--steel-3);padding:5rem}
+.fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2.5rem}
+.fin-card{background:var(--steel-2);padding:2rem;border-top:3px solid var(--red)}
+.fin-logo{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;text-transform:uppercase;color:var(--red);margin-bottom:.6rem}
+.fin-title{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--white);margin-bottom:.8rem}
+.fin-desc{font-size:.85rem;color:var(--muted);line-height:1.8}
+.fin-link{display:inline-block;margin-top:1rem;font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);text-decoration:none}
+.fin-link:hover{text-decoration:underline}
+.fin-types{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:2.5rem}
+.fin-type-tag{background:var(--steel-4);padding:.6rem 1rem;font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:var(--muted);border:1px solid var(--steel-4);transition:all .2s;cursor:default}
+.fin-type-tag:hover{border-color:var(--red);color:var(--red)}
 
 /* TESTIMONIALS */
 .testimonials{background:var(--steel-2);padding:5rem}
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2.5rem;background:var(--steel-4)}
-.test-card{background:var(--steel-2);padding:1.8rem;transition:background .2s}
+.test-card{background:var(--steel-2);padding:1.8rem;transition:background .2s;display:flex;flex-direction:column}
 .test-card:hover{background:var(--steel-3)}
-.test-stars{display:flex;gap:.15rem;margin-bottom:.9rem}
-.star{color:var(--yellow);font-size:.88rem}
-.test-quote{font-size:.95rem;line-height:1.8;color:var(--offwhite);margin-bottom:1.2rem;border-left:3px solid var(--yellow);padding-left:1rem}
-.test-author strong{font-family:'Oswald',sans-serif;font-size:.88rem;font-weight:700;text-transform:uppercase;display:block}
-.test-author span{font-size:.72rem;color:var(--muted)}
-
-/* FINANCING */
-.financing{background:var(--steel);padding:5rem;border-top:3px solid rgba(245,168,0,.2)}
-.fin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--steel-4);margin-top:2.5rem}
-.fin-card{background:var(--steel-2);padding:2rem;transition:background .2s}
-.fin-card:hover{background:var(--steel-3)}
-.fin-card.highlight{background:var(--yellow);border:none}
-.fin-card.highlight .fin-icon,.fin-card.highlight .fin-title,.fin-card.highlight .fin-desc{color:var(--steel)!important}
-.fin-icon{font-size:2rem;display:block;margin-bottom:1rem}
-.fin-title{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:.6rem}
-.fin-desc{font-size:.85rem;color:var(--muted);line-height:1.75}
-.fin-card.highlight .fin-desc{color:rgba(0,0,0,.65)!important}
+.test-img-wrap{width:100%;height:160px;overflow:hidden;margin-bottom:1.2rem;flex-shrink:0}
+.test-img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%);transition:transform .3s}
+.test-card:hover .test-img{transform:scale(1.04)}
+.test-company{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:.4rem}
+.test-location{font-size:.72rem;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem}
+.test-quote{font-size:.88rem;color:var(--muted);line-height:1.8;border-left:3px solid var(--red);padding-left:1rem;flex:1}
 
 /* CONTACT */
-.contact{background:var(--steel-3);padding:5rem;border-top:4px solid var(--yellow)}
+.contact-section{background:var(--steel-3);padding:5rem;border-top:4px solid var(--red)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:start}
 .contact-info p{color:var(--muted);margin-top:1rem;line-height:1.8;max-width:420px}
-.contact-details{margin-top:1.8rem;display:flex;flex-direction:column;gap:.7rem}
-.cd-row{display:flex;gap:.7rem;align-items:baseline;font-size:.85rem;color:var(--muted)}
-.cd-row strong{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);min-width:46px}
+.contact-reps{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.8rem}
+.rep-card{background:var(--steel-2);padding:1.4rem;border-top:3px solid var(--red)}
+.rep-img{width:60px;height:60px;border-radius:50%;object-fit:cover;margin-bottom:.8rem;border:2px solid var(--red)}
+.rep-name{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;margin-bottom:.2rem}
+.rep-role{font-size:.7rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.rep-phone{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;color:var(--red);text-decoration:none;display:block;margin-top:.3rem}
+.rep-phone:hover{color:var(--red-light)}
 .contact-form{display:flex;flex-direction:column;gap:.9rem}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
 .form-input,.form-select,.form-textarea{background:var(--steel-4);border:1px solid var(--steel-4);color:var(--white);padding:.8rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.88rem;width:100%;transition:border-color .2s;outline:none}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--yellow)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--red)}
 .form-input::placeholder,.form-textarea::placeholder{color:var(--concrete)}
 .form-select option{background:var(--steel-4)}
 .form-textarea{resize:vertical;min-height:90px}
-.form-submit{background:var(--yellow);color:var(--steel);border:none;padding:1rem;width:100%;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s}
-.form-submit:hover{background:var(--yellow-dark)}
+.form-submit{background:var(--red);color:#fff;border:none;padding:1rem;width:100%;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.form-submit:hover{background:var(--red-dark)}
 .form-note{font-size:.72rem;color:var(--muted);text-align:center}
 
 /* FOOTER */
-footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5rem 2rem}
+footer{background:var(--steel);border-top:3px solid var(--red);padding:4rem 5rem 2rem}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--steel-3)}
-.footer-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem}
-.footer-logo .ico{font-size:1.4rem}
+.footer-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;text-decoration:none}
+.footer-logo .ico{font-size:1.5rem}
 .footer-logo .txt{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;color:var(--white)}
-.footer-logo .txt span{color:var(--yellow)}
-.footer-brand p{font-size:.82rem;color:var(--muted);line-height:1.8;max-width:270px}
-.footer-col h4{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:1rem}
+.footer-logo .txt span{color:var(--red)}
+.footer-brand p{font-size:.82rem;color:var(--muted);line-height:1.8;max-width:280px}
+.footer-col h4{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:1rem}
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:.5rem}
 .footer-col a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:color .2s}
 .footer-col a:hover{color:var(--white)}
 .fcr{display:flex;gap:.6rem;margin-bottom:.55rem;font-size:.82rem;color:var(--muted)}
-.fcr strong{font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);min-width:36px}
+.fcr strong{font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);min-width:40px}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--concrete);flex-wrap:wrap;gap:.5rem}
 .footer-bottom a{color:var(--concrete);text-decoration:none}
-.footer-bottom a:hover{color:var(--yellow)}
+.footer-bottom a:hover{color:var(--red)}
+.maple-leaf{color:var(--red)}
 
 /* ANIMATIONS */
 @keyframes slideDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeLeft{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+nav{animation:slideDown .6s ease forwards}
+
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.55s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}
 
 /* TABLET ≤1024 */
 @media(max-width:1024px){
@@ -298,26 +268,20 @@ footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5
   .nav-hamburger{display:flex}
   .hero{padding:6rem 3rem 5rem}
   .hero-img{width:45%}
+  .announce{padding:4rem 3rem}
+  .announce-inner{grid-template-columns:1fr;gap:2.5rem}
   .categories{padding:4rem 3rem}
-  .cat-grid{grid-template-columns:repeat(3,1fr)}
-  .cat-img{height:100px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
   .inventory{padding:4rem 3rem}
-  .equip-grid{grid-template-columns:repeat(2,1fr)}
-  .equip-card.wide{grid-column:span 2}
-  .featured{padding:4rem 3rem}
-  .featured-grid{grid-template-columns:1fr;gap:2.5rem}
-  .featured-img{height:320px}
-  .why{padding:4rem 3rem}
-  .why-grid{grid-template-columns:1fr;gap:2.5rem}
-  .why-img{height:320px}
-  .services{padding:4rem 3rem}
-  .srv-grid{grid-template-columns:1fr 1fr}
-  .brands{padding:2.5rem 3rem}
+  .truck-grid{grid-template-columns:repeat(2,1fr)}
+  .truck-card.span2{grid-column:span 2}
+  .about-strip{padding:4rem 3rem}
+  .about-grid{grid-template-columns:1fr 1fr}
+  .financing{padding:4rem 3rem}
+  .fin-grid{grid-template-columns:1fr;gap:2.5rem}
   .testimonials{padding:4rem 3rem}
   .test-grid{grid-template-columns:1fr 1fr}
-  .financing{padding:4rem 3rem}
-  .fin-grid{grid-template-columns:1fr 1fr}
-  .contact{padding:4rem 3rem}
+  .contact-section{padding:4rem 3rem}
   .contact-grid{grid-template-columns:1fr;gap:3rem}
   footer{padding:3.5rem 3rem 2rem}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
@@ -330,49 +294,38 @@ footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5
   .nav-brand{padding:0 1.8rem 0 1rem;clip-path:none}
   .nav-brand-text .top{display:none}
   .nav-brand-text .name{font-size:.88rem}
-  .nav-brand-icon{font-size:1.2rem}
   .hero{padding:5.5rem 1.5rem 7rem;min-height:auto}
   .hero-img,.hero-bg::after{display:none}
   .hero-title{font-size:clamp(2.6rem,12vw,4rem)}
   .hero-desc{max-width:100%}
   .hero-actions{flex-direction:column}
-  .hero-actions .btn-yellow,.hero-actions .btn-outline{width:100%;text-align:center;clip-path:none}
+  .hero-actions .btn-red,.hero-actions .btn-outline{width:100%;text-align:center;clip-path:none}
   .hero-badges{flex-direction:column;gap:.9rem}
   .stats-bar{grid-template-columns:1fr 1fr}
+  .announce{padding:3rem 1.5rem}
   .categories{padding:3rem 1.5rem}
   .cat-grid{grid-template-columns:repeat(2,1fr)}
-  .cat-img{height:80px}
+  .cat-img{height:100px}
   .inventory{padding:3rem 1.5rem}
   .inv-toolbar{flex-direction:column;align-items:flex-start}
-  .equip-grid{grid-template-columns:1fr;background:transparent;gap:1rem}
-  .equip-card.wide{grid-column:span 1}
-  .equip-card,.equip-card.wide{border:1px solid var(--steel-4)}
-  .equip-card.wide .eq-img{height:210px}
-  .eq-footer{flex-direction:column;align-items:flex-start}
-  .eq-actions{width:100%}
-  .eq-btn,.eq-btn-ghost{flex:1;text-align:center}
-  .featured{padding:3rem 1.5rem}
-  .feat-spec-grid{grid-template-columns:1fr 1fr}
-  .feat-table-grid{grid-template-columns:1fr}
-  .why{padding:3rem 1.5rem}
-  .why-img{height:230px}
-  .why-corner{bottom:-.8rem;right:-.5rem;padding:.8rem 1rem}
-  .why-corner .num{font-size:1.5rem}
-  .services{padding:3rem 1.5rem}
-  .srv-grid{grid-template-columns:1fr}
-  .brands{padding:2rem 1.5rem}
-  .brands-inner{flex-direction:column;align-items:flex-start;gap:1rem}
+  .truck-grid{grid-template-columns:1fr;background:transparent;gap:1rem}
+  .truck-card.span2{grid-column:span 1}
+  .truck-card{border:1px solid var(--steel-4)}
+  .truck-footer{flex-direction:column;align-items:flex-start}
+  .about-strip{padding:3rem 1.5rem}
+  .about-grid{grid-template-columns:1fr}
+  .financing{padding:3rem 1.5rem}
+  .fin-types{grid-template-columns:1fr}
   .testimonials{padding:3rem 1.5rem}
   .test-grid{grid-template-columns:1fr}
-  .financing{padding:3rem 1.5rem}
-  .fin-grid{grid-template-columns:1fr}
-  .contact{padding:3rem 1.5rem}
+  .contact-section{padding:3rem 1.5rem}
+  .contact-reps{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   footer{padding:3rem 1.5rem 6rem}
   .footer-grid{grid-template-columns:1fr;gap:2rem}
   .footer-bottom{flex-direction:column;text-align:center}
   .mobile-callbar{display:grid}
-  .btn-yellow{clip-path:none}
+  .btn-red{clip-path:none}
 }
 </style>
 </head>
@@ -381,22 +334,22 @@ footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#">
-    <span class="nav-brand-icon">🏗️</span>
+    <span class="nav-brand-icon">🚛</span>
     <div class="nav-brand-text">
-      <span class="top">Est. 1989 · North Bay, ON</span>
-      <span class="name">George's Heavy Equipment</span>
+      <span class="top">Canadian Vacuum Trucks &amp; Equipment</span>
+      <span class="name">CANVAC</span>
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#inventory">Inventory</a></li>
-    <li><a href="#featured">Featured</a></li>
-    <li><a href="#services">Services</a></li>
+    <li><a href="#inventory">New Equipment</a></li>
+    <li><a href="#used">Used Inventory</a></li>
     <li><a href="#financing">Financing</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact Us</a></li>
   </ul>
   <div class="nav-right">
-    <a class="nav-phone" href="tel:17054805800">📞 (705) 480-5800</a>
-    <button class="nav-quote" onclick="goto('contact')">Get a Quote</button>
+    <a class="nav-phone" href="tel:12898807888">📞 289-880-7888</a>
+    <button class="nav-cta" onclick="goto('contact')">Get a Quote</button>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -408,20 +361,21 @@ footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5
 
 <!-- MOBILE DRAWER -->
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <a href="#inventory">Inventory</a>
-  <a href="#featured">Featured Unit</a>
-  <a href="#services">Services</a>
+  <a href="#inventory">New Equipment</a>
+  <a href="#used">Used Inventory</a>
   <a href="#financing">Financing</a>
+  <a href="#testimonials">Testimonials</a>
   <a href="#contact">Contact</a>
-  <div class="mob-nav-cta">
-    <a class="mob-phone" href="tel:17054805800">📞 (705) 480-5800</a>
+  <div class="mob-cta-wrap">
+    <a class="mob-phone-link" href="tel:12898807888">📞 Stan: 289-880-7888</a>
+    <a class="mob-phone-link" href="tel:17052620843">📞 George: 705-262-0843</a>
     <button class="mob-quote-btn" id="mobQuote">Get a Free Quote →</button>
   </div>
 </div>
 
-<!-- MOBILE CALL BAR -->
+<!-- STICKY MOBILE CALL BAR -->
 <div class="mobile-callbar">
-  <a href="tel:17054805800">📞 Call George</a>
+  <a href="tel:12898807888">📞 Call Stan</a>
   <button onclick="goto('contact')">✉️ Get a Quote</button>
 </div>
 
@@ -429,499 +383,645 @@ footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-img">
-    <img src="https://s7d2.scene7.com/is/image/Caterpillar/CM20180212-41328-33143?wid=1200&hei=800&op_sharpen=1&qlt=85" alt="Caterpillar large excavator on job site"/>
+    <img src="https://canvactrucks.com/images/inventory/10-15-25-Kenworth-in.jpg" alt="CANVAC vacuum truck"/>
   </div>
   <div class="hero-content">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
-      <span>Serving Ontario &amp; Beyond Since 1989</span>
+      <span>A Canadian Company — Dedicated to the Canadian Market</span>
     </div>
     <h1 class="hero-title">
-      <span class="outline">Heavy</span>
-      <span class="yellow">Equipment</span>
-      <span>Done Right.</span>
+      <span class="outline">Canadian</span>
+      <span class="accent">Vacuum Trucks</span>
+      <span>&amp; Equipment</span>
     </h1>
-    <p class="hero-desc">New, used &amp; rental heavy equipment for construction, mining, forestry, and road work. We stock Cat, Komatsu, Volvo, Liebherr and more — with real specs, honest prices, and on-site service anywhere in Ontario.</p>
+    <p class="hero-desc">Septic trucks, hydro excavators, portable restroom units, slide-ins, vacuum trailers and more — built for Canadian conditions, sourced for Canadian operators. No tariff surprises.</p>
     <div class="hero-actions">
-      <button class="btn-yellow" onclick="goto('inventory')">Browse Equipment</button>
-      <button class="btn-outline" onclick="goto('contact')">📞 &nbsp;Call George Direct</button>
+      <button class="btn-red" onclick="goto('inventory')">Browse New Equipment</button>
+      <button class="btn-outline" onclick="goto('contact')">📞 Call Stan or George</button>
     </div>
     <div class="hero-badges">
-      <div class="hero-badge-item"><span class="badge-icon">✅</span><div class="badge-text"><strong>35+ Years</strong>in business</div></div>
-      <div class="hero-badge-item"><span class="badge-icon">🔧</span><div class="badge-text"><strong>On-Site</strong>service &amp; repair</div></div>
-      <div class="hero-badge-item"><span class="badge-icon">🚛</span><div class="badge-text"><strong>Canada-Wide</strong>low-bed delivery</div></div>
+      <div class="hero-badge-item"><span class="badge-icon">🍁</span><div class="badge-text"><strong>Canada Strong</strong>No Inbound Tariffs</div></div>
+      <div class="hero-badge-item"><span class="badge-icon">🔧</span><div class="badge-text"><strong>Custom Builds</strong>to your specs</div></div>
+      <div class="hero-badge-item"><span class="badge-icon">💰</span><div class="badge-text"><strong>Prices Reduced</strong>to support your needs</div></div>
     </div>
   </div>
 </section>
 
 <!-- STATS -->
 <div class="stats-bar reveal">
-  <div class="stat-item"><div class="stat-num" data-target="99">0</div><div class="stat-label">Units In Stock</div></div>
-  <div class="stat-item"><div class="stat-num" data-target="35">0</div><div class="stat-label">Years in Business</div></div>
-  <div class="stat-item"><div class="stat-num" data-target="12000">0</div><div class="stat-label">Parts in Stock</div></div>
-  <div class="stat-item"><div class="stat-num" data-target="4">0</div><div class="stat-label">Mobile Service Rigs</div></div>
+  <div class="stat-item"><div class="stat-num" data-target="35">0</div><div class="stat-label">Units In Stock / Coming</div></div>
+  <div class="stat-item"><div class="stat-num" data-target="30">0</div><div class="stat-label">Years in Business</div></div>
+  <div class="stat-item"><div class="stat-num" data-target="0" data-text="0%">0%</div><div class="stat-label">Inbound Tariffs</div></div>
+  <div class="stat-item"><div class="stat-num" data-target="2">0</div><div class="stat-label">Dedicated Reps</div></div>
 </div>
 
 <!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner">
-    <span>New Inventory Arriving Weekly</span><span class="t-dot">◆</span>
-    <span>Cat · Komatsu · Volvo · Liebherr · John Deere · Hitachi · Doosan · Dynapac</span><span class="t-dot">◆</span>
-    <span>Financing OAC · Rent · Buy · Trade</span><span class="t-dot">◆</span>
-    <span>Mobile Service Across Ontario</span><span class="t-dot">◆</span>
-    <span>Call George Direct: (705) 480-5800</span><span class="t-dot">◆</span>
-    <span>New Inventory Arriving Weekly</span><span class="t-dot">◆</span>
-    <span>Cat · Komatsu · Volvo · Liebherr · John Deere · Hitachi · Doosan · Dynapac</span><span class="t-dot">◆</span>
-    <span>Financing OAC · Rent · Buy · Trade</span><span class="t-dot">◆</span>
-    <span>Mobile Service Across Ontario</span><span class="t-dot">◆</span>
-    <span>Call George Direct: (705) 480-5800</span><span class="t-dot">◆</span>
+    <span>Hydro Excavators</span><span class="t-dot">◆</span>
+    <span>Septic &amp; Vacuum Trucks</span><span class="t-dot">◆</span>
+    <span>Portable Restroom Trucks</span><span class="t-dot">◆</span>
+    <span>Slide-In Vacuum Units</span><span class="t-dot">◆</span>
+    <span>Vacuum Trailers — Polished Stainless Steel</span><span class="t-dot">◆</span>
+    <span>DOT Certified Hazmat Trucks</span><span class="t-dot">◆</span>
+    <span>Refurbish Your Current Equipment</span><span class="t-dot">◆</span>
+    <span>Call Stan: 289-880-7888 · George: 705-262-0843</span><span class="t-dot">◆</span>
+    <span>Hydro Excavators</span><span class="t-dot">◆</span>
+    <span>Septic &amp; Vacuum Trucks</span><span class="t-dot">◆</span>
+    <span>Portable Restroom Trucks</span><span class="t-dot">◆</span>
+    <span>Slide-In Vacuum Units</span><span class="t-dot">◆</span>
+    <span>Vacuum Trailers — Polished Stainless Steel</span><span class="t-dot">◆</span>
+    <span>DOT Certified Hazmat Trucks</span><span class="t-dot">◆</span>
+    <span>Refurbish Your Current Equipment</span><span class="t-dot">◆</span>
+    <span>Call Stan: 289-880-7888 · George: 705-262-0843</span><span class="t-dot">◆</span>
   </div>
 </div>
 
-<!-- CATEGORIES -->
-<section class="categories" id="categories">
-  <div class="section-label reveal"><span>Shop by Type</span></div>
-  <h2 class="section-title reveal d1">Find Your <em>Machine</em></h2>
-  <div class="cat-grid">
-    <div class="cat-card reveal d1"><img class="cat-img" src="https://s7d2.scene7.com/is/image/Caterpillar/CM20180212-41328-33143?wid=400&hei=120&op_sharpen=1&qlt=80&crop=0,50,400,120" alt="Excavators"/><div class="cat-info"><div class="cat-name">Excavators</div><div class="cat-count">24 units in stock</div></div></div>
-    <div class="cat-card reveal d2"><img class="cat-img" src="https://www.komatsu.com/content/dam/komatsu/websites/global/images/equipment-product/marketing/dozers/crawler-dozers/d375/414546_d375a-8-tier-4-final-action-3-web.jpg" alt="Bulldozers"/><div class="cat-info"><div class="cat-name">Bulldozers</div><div class="cat-count">18 units in stock</div></div></div>
-    <div class="cat-card reveal d3"><img class="cat-img" src="https://images.unsplash.com/photo-1590599145008-e4ec48e5d8c6?w=400&auto=format&fit=crop&q=75" alt="Cranes"/><div class="cat-info"><div class="cat-name">Cranes</div><div class="cat-count">9 units in stock</div></div></div>
-    <div class="cat-card reveal d4"><img class="cat-img" src="https://www.volvoce.com/-/media/aprimo/images/large-wheel-loaders/l350h/volvo-find-wheel-loader-l350h-t3-t4f-1000x1000.jpg?mw=400&jq=80" alt="Wheel Loaders"/><div class="cat-info"><div class="cat-name">Wheel Loaders</div><div class="cat-count">21 units in stock</div></div></div>
-    <div class="cat-card reveal d5"><img class="cat-img" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&auto=format&fit=crop&q=75" alt="Motor Graders"/><div class="cat-info"><div class="cat-name">Motor Graders</div><div class="cat-count">12 units in stock</div></div></div>
-    <div class="cat-card reveal d6"><img class="cat-img" src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=400&auto=format&fit=crop&q=75" alt="Compactors"/><div class="cat-info"><div class="cat-name">Compactors</div><div class="cat-count">15 units in stock</div></div></div>
+<!-- ANNOUNCEMENT -->
+<section class="announce">
+  <div class="announce-inner">
+    <div class="reveal">
+      <div class="announce-label">🍁 Latest from CANVAC</div>
+      <h2>Prices Reduced to <em>Support Your Needs</em></h2>
+      <p>It's been close to a year since significant tariffs were imposed globally. While many Canadian industries paused capital spending, activity has come back strong in the last 90 days. The Canadian dollar has gained strength against the USD, and freight companies are aggressively quoting — supporting lower prices.</p>
+      <p><strong>At this point there are NO INBOUND TARIFFS on Mobile Vacuum Equipment into Canada.</strong></p>
+      <p>Our expanded product line now includes DOT certified vacuum trucks for transportation of hazardous waste under the CUSCO brand — a name Stan has trusted for decades. We're proud to be importing CUSCO vacuum trucks into Canada.</p>
+      <div class="announce-contacts">
+        <div class="contact-person">
+          <span class="person-name">Stan Jones — Founder</span>
+          <a class="person-phone" href="tel:12898807888">📞 289-880-7888</a>
+        </div>
+        <div style="width:1px;background:var(--steel-4);margin:0 .5rem"></div>
+        <div class="contact-person">
+          <span class="person-name">George Guppy — Partner</span>
+          <a class="person-phone" href="tel:17052620843">📞 705-262-0843</a>
+        </div>
+      </div>
+    </div>
+    <div class="reveal d2">
+      <div class="announce-cusco">
+        <h3>🆕 New: CUSCO Vacuum Trucks</h3>
+        <p>CANVAC is now actively selling and importing <strong>CUSCO</strong> DOT certified vacuum trucks in Canada. Stan grew up in the world of CUSCO Vacuum Trucks — he knows the engineers designing the product, he knows the quality, and he knows the factory support. Reach out to us for more information or a quotation.</p>
+        <img src="https://canvactrucks.com/images/equipment/septic-wblowers-intro.jpg" alt="CUSCO Vacuum Truck" style="width:100%;height:180px;object-fit:cover;margin-top:1rem;filter:grayscale(10%)"/>
+      </div>
+      <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--steel-3);border-left:3px solid var(--red)">
+        <p style="font-size:.82rem;color:var(--muted);line-height:1.75"><strong style="color:var(--white)">We are CANADA STRONG!</strong> — In many cases we can sell to you at prices equal to or below factory direct, while managing your entire order.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- INVENTORY -->
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="section-label reveal"><span>Equipment Types</span></div>
+  <h2 class="section-title reveal d1">We Focus on <em>Vacuum Equipment</em></h2>
+  <div class="cat-grid">
+    <div class="cat-card reveal d1">
+      <img class="cat-img" src="https://canvactrucks.com/images/inventory/2020-Rival-Automatic-Hydro-Ex-intro.jpg" alt="Hydro Excavators"/>
+      <div class="cat-info"><div class="cat-name">Hydro Excavators</div><div class="cat-desc">Single, tandem &amp; tri drives available</div></div>
+    </div>
+    <div class="cat-card reveal d2">
+      <img class="cat-img" src="https://canvactrucks.com/images/inventory/10-15-25-Kenworth-in.jpg" alt="Septic Trucks"/>
+      <div class="cat-info"><div class="cat-name">Septic Trucks</div><div class="cat-desc">Aluminum, stainless &amp; carbon steel tanks</div></div>
+    </div>
+    <div class="cat-card reveal d3">
+      <img class="cat-img" src="https://canvactrucks.com/images/equipment/low-profile-underground-toilet-units-intro.jpg" alt="Portable Restroom Trucks"/>
+      <div class="cat-info"><div class="cat-name">Portable Restroom Trucks</div><div class="cat-desc">All sizes · full heat packages</div></div>
+    </div>
+    <div class="cat-card reveal d4">
+      <img class="cat-img" src="https://canvactrucks.com/images/equipment/Slide-In-Units-great-for-start-up-or-back-up.jpg" alt="Slide-In Units"/>
+      <div class="cat-info"><div class="cat-name">Slide-In Units</div><div class="cat-desc">300 to 2,500 US Gallons</div></div>
+    </div>
+    <div class="cat-card reveal d1">
+      <img class="cat-img" src="https://canvactrucks.com/images/inventory/Hurricane600-Tier4-intro.jpg" alt="Vacuum Trailers"/>
+      <div class="cat-info"><div class="cat-name">Vacuum Trailers</div><div class="cat-desc">Polished stainless steel</div></div>
+    </div>
+    <div class="cat-card reveal d2">
+      <img class="cat-img" src="https://canvactrucks.com/images/equipment/2025-Mack-toilet-servicing-intro.jpg" alt="DOT Certified Hazmat"/>
+      <div class="cat-info"><div class="cat-name">DOT Hazmat Trucks</div><div class="cat-desc">CUSCO certified for hazardous waste</div></div>
+    </div>
+    <div class="cat-card reveal d3">
+      <img class="cat-img" src="https://canvactrucks.com/images/equipment/Water-Truck-2000USG.jpg" alt="Water Trucks"/>
+      <div class="cat-info"><div class="cat-name">Water Trucks</div><div class="cat-desc">Available — call for details</div></div>
+    </div>
+    <div class="cat-card reveal d4">
+      <img class="cat-img" src="https://canvactrucks.com/images/equipment/F550Cab.jpg" alt="Cab & Chassis"/>
+      <div class="cat-info"><div class="cat-name">Cab &amp; Chassis</div><div class="cat-desc">Dodge 5500, Kenworth, Freightliner, RAM</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW EQUIPMENT -->
 <section class="inventory" id="inventory">
   <div class="inv-toolbar">
     <div>
-      <div class="section-label reveal"><span>Current Stock</span></div>
-      <h2 class="section-title reveal d1">Available <em>Equipment</em></h2>
+      <div class="section-label reveal"><span>New Equipment</span></div>
+      <h2 class="section-title reveal d1">On the Ground &amp; <em>Ready to Roll</em></h2>
       <div class="filter-row reveal d2">
         <button class="filter-btn active" onclick="setFilter(this)">All</button>
-        <button class="filter-btn" onclick="setFilter(this)">Excavators</button>
-        <button class="filter-btn" onclick="setFilter(this)">Dozers</button>
-        <button class="filter-btn" onclick="setFilter(this)">Loaders</button>
-        <button class="filter-btn" onclick="setFilter(this)">Cranes</button>
-        <button class="filter-btn" onclick="setFilter(this)">Graders</button>
+        <button class="filter-btn" onclick="setFilter(this)">Kenworth</button>
+        <button class="filter-btn" onclick="setFilter(this)">Freightliner</button>
+        <button class="filter-btn" onclick="setFilter(this)">International</button>
+        <button class="filter-btn" onclick="setFilter(this)">Dodge / RAM</button>
+        <button class="filter-btn" onclick="setFilter(this)">Trailers</button>
       </div>
     </div>
   </div>
 
-  <div class="equip-grid">
+  <div class="truck-grid">
 
-    <!-- CAT 390F — WIDE FEATURED -->
-    <div class="equip-card wide reveal">
-      <div class="eq-badge eq-badge-featured">⭐ Featured Unit</div>
-      <div class="eq-img-wrap">
-        <img class="eq-img" src="https://s7d2.scene7.com/is/image/Caterpillar/CM20200217-614d5-d9430?wid=1000&hei=600&op_sharpen=1&qlt=85" alt="Caterpillar 390F L Excavator"/>
+    <!-- FEATURED SPAN 2 -->
+    <div class="truck-card span2 reveal">
+      <div class="truck-badge badge-new">⭐ Ready to Roll</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/2026KW-ready-intro.jpg" alt="2026 Kenworth w/4000 USG Alum Tank"/>
       </div>
-      <div class="eq-body">
-        <div class="eq-type">Excavator · 2022 · Certified Pre-Owned</div>
-        <div class="eq-name">Caterpillar 390F L Hydraulic Excavator</div>
-        <div class="eq-specs">
-          <div class="eq-spec"><label>Hours</label><value>3,204 hrs</value></div>
-          <div class="eq-spec"><label>Engine</label><value>Cat C18 ACERT — 524 HP</value></div>
-          <div class="eq-spec"><label>Op. Weight</label><value>87,280 kg (192,430 lb)</value></div>
-        </div>
-        <div class="eq-full-specs" id="specs-cat390">
-          <h4>Full Specifications</h4>
-          <div class="eq-spec-table">
-            <div class="eq-spec-row"><span>Engine Model</span><span>Cat C18 ACERT</span></div>
-            <div class="eq-spec-row"><span>Net Power (SAE J1349)</span><span>391 kW / 524 HP</span></div>
-            <div class="eq-spec-row"><span>Operating Weight</span><span>87,906 kg / 193,800 lb</span></div>
-            <div class="eq-spec-row"><span>Max. Travel Speed</span><span>4.5 km/h</span></div>
-            <div class="eq-spec-row"><span>Max. Drawbar Pull</span><span>590 kN / 132,637 lbf</span></div>
-            <div class="eq-spec-row"><span>Bucket Capacity</span><span>2.2 m³ / 2.9 yd³</span></div>
-            <div class="eq-spec-row"><span>Max. Dig Depth</span><span>10.75 m / 35 ft 3 in</span></div>
-            <div class="eq-spec-row"><span>Max. H. Reach</span><span>15.73 m / 51 ft 7 in</span></div>
-            <div class="eq-spec-row"><span>Fuel Tank</span><span>1,241 L / 328 gal</span></div>
-            <div class="eq-spec-row"><span>Swing Speed</span><span>6.2 rpm</span></div>
-            <div class="eq-spec-row"><span>Track Width</span><span>650 mm / 25.6 in</span></div>
-            <div class="eq-spec-row"><span>Transport Length</span><span>14.5 m / 47 ft 7 in</span></div>
-          </div>
-        </div>
-        <div class="eq-footer">
-          <div class="eq-price">$1,240,000 <small>CAD · Financing Available OAC</small></div>
-          <div class="eq-actions">
-            <button class="eq-btn" onclick="goto('contact')">Request Info</button>
-            <button class="eq-btn-ghost" onclick="toggleSpecs('specs-cat390',this)">Full Specs ▾</button>
+      <div class="truck-body">
+        <div class="truck-type">Kenworth · New 2026 · Available Now</div>
+        <div class="truck-name">2026 Kenworth w/4000 USG Aluminum Tank</div>
+        <div class="truck-footer">
+          <div style="font-size:.82rem;color:var(--muted)">4,000 US Gallon Aluminum Vacuum Tank · Available Immediately</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/336-2026-kenworth-w-4000-usg-alum-tank-ready-to-roll" target="_blank">Details →</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- KOMATSU D375A-8 -->
-    <div class="equip-card reveal d1">
-      <div class="eq-badge eq-badge-reduced">🔥 Price Reduced</div>
-      <div class="eq-img-wrap">
-        <img class="eq-img" src="https://www.komatsu.com/content/dam/komatsu/websites/global/images/equipment-product/marketing/dozers/crawler-dozers/d375/414546_d375a-8-tier-4-final-action-3-web.jpg" alt="Komatsu D375A-8 Dozer"/>
+    <div class="truck-card reveal d1">
+      <div class="truck-badge badge-new">CDN Budget Special</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/NewKW-T480-intro.jpg" alt="2026 Kenworth T480"/>
       </div>
-      <div class="eq-body">
-        <div class="eq-type">Crawler Dozer · 2020</div>
-        <div class="eq-name">Komatsu D375A-8 Crawler Dozer</div>
-        <div class="eq-specs">
-          <div class="eq-spec"><label>Hours</label><value>5,840 hrs</value></div>
-          <div class="eq-spec"><label>Engine</label><value>Komatsu SAA6D170E-5 · 609 HP</value></div>
-          <div class="eq-spec"><label>Op. Weight</label><value>74,090 kg (163,340 lb)</value></div>
-        </div>
-        <div class="eq-full-specs" id="specs-d375">
-          <h4>Full Specifications</h4>
-          <div class="eq-spec-table">
-            <div class="eq-spec-row"><span>Engine</span><span>SAA6D170E-5 Tier 4</span></div>
-            <div class="eq-spec-row"><span>Net HP (Forward)</span><span>455 kW / 609 HP @ 1,800 rpm</span></div>
-            <div class="eq-spec-row"><span>Net HP (Reverse)</span><span>558 kW / 748 HP @ 1,800 rpm</span></div>
-            <div class="eq-spec-row"><span>Operating Weight</span><span>74,090 kg / 163,340 lb</span></div>
-            <div class="eq-spec-row"><span>Blade Cap. Semi-U</span><span>18.5 m³ / 24.2 yd³</span></div>
-            <div class="eq-spec-row"><span>Blade Cap. Full-U</span><span>22.0 m³ / 28.8 yd³</span></div>
-            <div class="eq-spec-row"><span>Track Width</span><span>610 mm / 24 in</span></div>
-            <div class="eq-spec-row"><span>Fuel Tank</span><span>1,200 L / 317 gal</span></div>
-            <div class="eq-spec-row"><span>Transport Length</span><span>10.56 m / 34 ft 8 in</span></div>
-            <div class="eq-spec-row"><span>Transport Width</span><span>4.775 m / 15 ft 8 in</span></div>
-            <div class="eq-spec-row"><span>Transmission</span><span>Auto TORQFLOW w/ Lockup</span></div>
-            <div class="eq-spec-row"><span>Emission Standard</span><span>EPA Tier 4 Final</span></div>
-          </div>
-        </div>
-        <div class="eq-footer">
-          <div class="eq-price">$680,000 <small>CAD</small></div>
-          <div class="eq-actions">
-            <button class="eq-btn" onclick="goto('contact')">Request Info</button>
-            <button class="eq-btn-ghost" onclick="toggleSpecs('specs-d375',this)">Full Specs ▾</button>
+      <div class="truck-body">
+        <div class="truck-type">Kenworth · New 2026</div>
+        <div class="truck-name">2026 Kenworth T480 w/4200 USG Tank</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">4,200 USG Vacuum Tank · CDN Budget Special</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/341-2026-kenworth-t480-w-4200-usg-tank-cdn-budget-special" target="_blank">Details</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- LIEBHERR LTM 1200-5.1 -->
-    <div class="equip-card reveal d2">
-      <div class="eq-img-wrap">
-        <img class="eq-img" src="https://images.unsplash.com/photo-1590599145008-e4ec48e5d8c6?w=700&auto=format&fit=crop&q=80" alt="Liebherr Mobile Crane"/>
+    <div class="truck-card reveal d2">
+      <div class="truck-badge badge-new">CDN Budget Special</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/New-FL-4000USG-intro.jpg" alt="2026 Freightliner 4000 USG"/>
       </div>
-      <div class="eq-body">
-        <div class="eq-type">All-Terrain Crane · 2021</div>
-        <div class="eq-name">Liebherr LTM 1200-5.1 Mobile Crane</div>
-        <div class="eq-specs">
-          <div class="eq-spec"><label>Hours</label><value>1,980 hrs</value></div>
-          <div class="eq-spec"><label>Max Capacity</label><value>200 t @ 3 m radius</value></div>
-          <div class="eq-spec"><label>Boom Length</label><value>72 m (236 ft)</value></div>
-        </div>
-        <div class="eq-full-specs" id="specs-ltm">
-          <h4>Full Specifications</h4>
-          <div class="eq-spec-table">
-            <div class="eq-spec-row"><span>Max Lift Capacity</span><span>200 t at 3 m radius</span></div>
-            <div class="eq-spec-row"><span>Max Boom Length</span><span>72 m / 236 ft (telescopic)</span></div>
-            <div class="eq-spec-row"><span>Max Hook Height</span><span>101 m / 331 ft</span></div>
-            <div class="eq-spec-row"><span>Max Radius</span><span>80 m / 262 ft</span></div>
-            <div class="eq-spec-row"><span>Jib Length</span><span>11–43 m hydraulic folding</span></div>
-            <div class="eq-spec-row"><span>Crane Engine</span><span>Liebherr D934 S-A6 145 kW / 197 HP</span></div>
-            <div class="eq-spec-row"><span>Drive Engine</span><span>Liebherr D846 6-cyl 370 kW / 503 HP</span></div>
-            <div class="eq-spec-row"><span>Number of Axles</span><span>5 — All-Terrain</span></div>
-            <div class="eq-spec-row"><span>Counterweight</span><span>72 t max (158,700 lb)</span></div>
-            <div class="eq-spec-row"><span>Control System</span><span>LICCON2 with Bluetooth</span></div>
-            <div class="eq-spec-row"><span>Braking System</span><span>Pneumatic disc (first in class)</span></div>
-            <div class="eq-spec-row"><span>Fuel Tank</span><span>488 L / 129 gal</span></div>
-          </div>
-        </div>
-        <div class="eq-footer">
-          <div class="eq-price">$2,100,000 <small>CAD</small></div>
-          <div class="eq-actions">
-            <button class="eq-btn" onclick="goto('contact')">Request Info</button>
-            <button class="eq-btn-ghost" onclick="toggleSpecs('specs-ltm',this)">Full Specs ▾</button>
+      <div class="truck-body">
+        <div class="truck-type">Freightliner · New 2026</div>
+        <div class="truck-name">2026 Freightliner w/4000 USG Tank</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">4,000 USG Vacuum Tank · CDN Budget Special</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/342-2026-freightliner-w-4000-usg-tank-cdn-budget-special" target="_blank">Details</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- VOLVO L350H -->
-    <div class="equip-card reveal">
-      <div class="eq-badge eq-badge-new">New Arrival</div>
-      <div class="eq-img-wrap">
-        <img class="eq-img" src="https://www.volvoce.com/-/media/aprimo/images/large-wheel-loaders/l350h/volvo-show-wheel-loader-l350h-update-t4f-2324x1200-wlo-l350h-update-t4f-h.jpg?mw=700&jq=85" alt="Volvo L350H Wheel Loader"/>
+    <div class="truck-card reveal">
+      <div class="truck-badge badge-new">CDN Budget Special</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/NewFL-M2-intro.jpg" alt="2026 Freightliner M2 1850 USG"/>
       </div>
-      <div class="eq-body">
-        <div class="eq-type">Wheel Loader · 2023</div>
-        <div class="eq-name">Volvo L350H Wheel Loader</div>
-        <div class="eq-specs">
-          <div class="eq-spec"><label>Hours</label><value>940 hrs</value></div>
-          <div class="eq-spec"><label>Engine</label><value>Volvo D13J — 435 HP</value></div>
-          <div class="eq-spec"><label>Op. Weight</label><value>50,720 kg (111,820 lb)</value></div>
-        </div>
-        <div class="eq-full-specs" id="specs-l350">
-          <h4>Full Specifications</h4>
-          <div class="eq-spec-table">
-            <div class="eq-spec-row"><span>Engine</span><span>Volvo D13J Tier 4</span></div>
-            <div class="eq-spec-row"><span>Net Power</span><span>324 kW / 435 HP</span></div>
-            <div class="eq-spec-row"><span>Operating Weight</span><span>50,720 kg / 111,820 lb</span></div>
-            <div class="eq-spec-row"><span>Std. Bucket Capacity</span><span>6.5 m³ / 8.5 yd³</span></div>
-            <div class="eq-spec-row"><span>Rock Bucket Capacity</span><span>6.9 m³ / 9.0 yd³</span></div>
-            <div class="eq-spec-row"><span>Lifting Force</span><span>450 kN / 101,160 lbf</span></div>
-            <div class="eq-spec-row"><span>Max Discharge Height</span><span>3.86 m / 12 ft 8 in</span></div>
-            <div class="eq-spec-row"><span>Max Travel Speed</span><span>38.2 km/h / 23.7 mph</span></div>
-            <div class="eq-spec-row"><span>Turning Radius (outside)</span><span>18.21 m / 59 ft 9 in</span></div>
-            <div class="eq-spec-row"><span>Transmission</span><span>Gen-3 OptiShift + Lockup TC</span></div>
-            <div class="eq-spec-row"><span>Std. Tyre Size</span><span>35/65 R33 L4</span></div>
-            <div class="eq-spec-row"><span>Transport Length</span><span>10.85 m / 35 ft 7 in</span></div>
-          </div>
-        </div>
-        <div class="eq-footer">
-          <div class="eq-price">$895,000 <small>CAD</small></div>
-          <div class="eq-actions">
-            <button class="eq-btn" onclick="goto('contact')">Request Info</button>
-            <button class="eq-btn-ghost" onclick="toggleSpecs('specs-l350',this)">Full Specs ▾</button>
+      <div class="truck-body">
+        <div class="truck-type">Freightliner M2 · New 2026</div>
+        <div class="truck-name">2026 Freightliner M2 w/1850 USG Tank</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">1,850 USG · Mid-Size</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/343-2026-freightliner-m2-w-1850-usg-tank-cdn-budget-special" target="_blank">Details</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- JOHN DEERE 872G -->
-    <div class="equip-card reveal d1">
-      <div class="eq-img-wrap">
-        <img class="eq-img" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&auto=format&fit=crop&q=80" alt="Motor Grader"/>
+    <div class="truck-card reveal d1">
+      <div class="truck-badge badge-soon">Coming Soon</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/2026-Canadian-Freightliner-intro.jpg" alt="2026 Freightliner Dumping Tank"/>
       </div>
-      <div class="eq-body">
-        <div class="eq-type">Motor Grader · 2019</div>
-        <div class="eq-name">John Deere 872G Motor Grader</div>
-        <div class="eq-specs">
-          <div class="eq-spec"><label>Hours</label><value>7,210 hrs</value></div>
-          <div class="eq-spec"><label>Engine</label><value>JD PowerTech — 275 HP</value></div>
-          <div class="eq-spec"><label>Blade Width</label><value>4.88 m (16 ft)</value></div>
-        </div>
-        <div class="eq-full-specs" id="specs-872g">
-          <h4>Full Specifications</h4>
-          <div class="eq-spec-table">
-            <div class="eq-spec-row"><span>Engine</span><span>JD PowerTech 6090H Tier 4</span></div>
-            <div class="eq-spec-row"><span>Net Power</span><span>205 kW / 275 HP</span></div>
-            <div class="eq-spec-row"><span>Operating Weight</span><span>22,316 kg / 49,200 lb</span></div>
-            <div class="eq-spec-row"><span>Moldboard Width</span><span>4.88 m / 16 ft</span></div>
-            <div class="eq-spec-row"><span>Moldboard Height</span><span>762 mm / 30 in</span></div>
-            <div class="eq-spec-row"><span>Max Blade Side Shift</span><span>762 mm / 30 in (each side)</span></div>
-            <div class="eq-spec-row"><span>Transmission</span><span>8F/4R Powershift</span></div>
-            <div class="eq-spec-row"><span>Max Travel Speed</span><span>42 km/h / 26 mph</span></div>
-            <div class="eq-spec-row"><span>Wheelbase</span><span>6,223 mm / 245 in</span></div>
-            <div class="eq-spec-row"><span>Fuel Tank</span><span>360 L / 95 gal</span></div>
-          </div>
-        </div>
-        <div class="eq-footer">
-          <div class="eq-price">$345,000 <small>CAD</small></div>
-          <div class="eq-actions">
-            <button class="eq-btn" onclick="goto('contact')">Request Info</button>
-            <button class="eq-btn-ghost" onclick="toggleSpecs('specs-872g',this)">Full Specs ▾</button>
+      <div class="truck-body">
+        <div class="truck-type">Freightliner · New 2026</div>
+        <div class="truck-name">2026 Freightliner w/Dumping Tank</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Dumping Tank · Coming Soon</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/329-2026-freightliner-w-dumping-tank-avail-now" target="_blank">Details</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- DYNAPAC CA6000D -->
-    <div class="equip-card reveal d2">
-      <div class="eq-badge eq-badge-rental">Rental Available</div>
-      <div class="eq-img-wrap">
-        <img class="eq-img" src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=700&auto=format&fit=crop&q=80" alt="Soil Compactor"/>
+    <div class="truck-card reveal d2">
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/1500-Stainless-steel-on-2025-Int-intro.jpg" alt="2025 International MV607"/>
       </div>
-      <div class="eq-body">
-        <div class="eq-type">Soil Compactor · 2021</div>
-        <div class="eq-name">Dynapac CA6000D Soil Compactor</div>
-        <div class="eq-specs">
-          <div class="eq-spec"><label>Hours</label><value>3,450 hrs</value></div>
-          <div class="eq-spec"><label>Engine</label><value>Cummins QSB6.7 — 209 HP</value></div>
-          <div class="eq-spec"><label>Drum Width</label><value>2,130 mm (84 in)</value></div>
-        </div>
-        <div class="eq-full-specs" id="specs-ca6000">
-          <h4>Full Specifications</h4>
-          <div class="eq-spec-table">
-            <div class="eq-spec-row"><span>Engine</span><span>Cummins QSB6.7 Tier 4</span></div>
-            <div class="eq-spec-row"><span>Net Power</span><span>156 kW / 209 HP</span></div>
-            <div class="eq-spec-row"><span>Operating Weight</span><span>19,400 kg / 42,770 lb</span></div>
-            <div class="eq-spec-row"><span>Drum Width</span><span>2,130 mm / 84 in</span></div>
-            <div class="eq-spec-row"><span>Drum Diameter</span><span>1,700 mm / 67 in</span></div>
-            <div class="eq-spec-row"><span>Amplitude (Low/High)</span><span>0.9 mm / 1.8 mm</span></div>
-            <div class="eq-spec-row"><span>Frequency (Low/High)</span><span>28 Hz / 33 Hz</span></div>
-            <div class="eq-spec-row"><span>Max Centrifugal Force</span><span>347 kN / 78,000 lbf</span></div>
-            <div class="eq-spec-row"><span>Static Linear Load</span><span>56 kg/cm</span></div>
-            <div class="eq-spec-row"><span>Max Speed</span><span>11 km/h / 6.8 mph</span></div>
-            <div class="eq-spec-row"><span>Fuel Tank</span><span>270 L / 71 gal</span></div>
-            <div class="eq-spec-row"><span>Rental Rate</span><span>Contact for pricing</span></div>
-          </div>
-        </div>
-        <div class="eq-footer">
-          <div class="eq-price">$218,000 <small>CAD · or Rent</small></div>
-          <div class="eq-actions">
-            <button class="eq-btn" onclick="goto('contact')">Request Info</button>
-            <button class="eq-btn-ghost" onclick="toggleSpecs('specs-ca6000',this)">Full Specs ▾</button>
+      <div class="truck-body">
+        <div class="truck-type">International MV607 · New 2025</div>
+        <div class="truck-name">2025 International MV607 Loaded</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Stainless Steel Tank · Fully Loaded</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/316-2025-international-mv607-loaded-vacuum-truck" target="_blank">Details</a>
           </div>
         </div>
       </div>
     </div>
 
-  </div><!-- /equip-grid -->
+    <div class="truck-card reveal">
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/2025-Freightliner-M2-106-ToiletService-intro.jpg" alt="2025 Freightliner M2 106 Toilet"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Freightliner M2 · New 2025</div>
+        <div class="truck-name">2025 Freightliner M2 106 Toilet Servicing Unit</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Portable Restroom Service</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/298-2025-freightliner-m2-106-toilet-servicing-unit" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="truck-card reveal d1">
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/2025-Freightliner-M2-106-intro.jpg" alt="2025 Freightliner M2 106"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Freightliner M2 · New 2025</div>
+        <div class="truck-name">New 2025 Freightliner M2 106 — Near Completion</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Near Completion · Fast Delivery</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/297-new-2025-freightliner-m2-106-near-completion" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="truck-card reveal d2">
+      <div class="truck-badge badge-new">New</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/2026-Transway-HydroVac-intro.jpg" alt="Transway HydroVac"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Hydro Excavator · New 2026</div>
+        <div class="truck-name">Brand New Transway HydroVac — Ready Soon</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Transway HydroVac · Coming Soon</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/331-brand-new-transway-hydrovac-ready-soon" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="truck-card reveal">
+      <div class="truck-badge badge-new">BIG Discount</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/low-profile-underground-toilet-units-intro.jpg" alt="Dodge 5500"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Dodge 5500 · 2026 Orders</div>
+        <div class="truck-name">Orders for 2026 Dodge 5500's — BIG Discounts!</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Built to Your Specs · Best Pricing</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/281-orders-for-2026-dodge-5500-s-offered-big-discounts" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="truck-card reveal d1">
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/2024-New-Ram-portable-toilet-servicing-unit.jpg" alt="2024 RAM 4x4"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">RAM 4x4 · New 2024</div>
+        <div class="truck-name">New 2024 RAM 4x4 Portable Toilet Unit</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">4x4 · Full Heat Package</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/332-new-2024-ram-4x4-portable-toilet-unit" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="truck-card reveal d2">
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/equipment/TranswayLowProfile2-intro.jpg" alt="Low Profile Underground"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Low Profile · No Tariffs</div>
+        <div class="truck-name">Low Profile Underground Vacuum Truck — No Tariffs!</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Ford F550 · Underground Work</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Get Price</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/equipment/300-low-profile-underground-vacuum-truck-ready-in-january" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
   <div style="text-align:center;margin-top:2.5rem" class="reveal">
-    <button class="btn-yellow">View All 99+ Units in Stock →</button>
+    <a href="https://canvactrucks.com/equipment" target="_blank" class="btn-red" style="display:inline-block;text-decoration:none">View All New Equipment →</a>
   </div>
 </section>
 
-<!-- FEATURED DETAIL -->
-<section class="featured" id="featured">
-  <div class="section-label reveal"><span>Unit of the Month</span></div>
-  <h2 class="section-title reveal d1">Featured <em>Machine</em></h2>
-  <div class="featured-grid" style="margin-top:2.5rem">
-    <div class="featured-img-wrap reveal">
-      <img class="featured-img" src="https://s7d2.scene7.com/is/image/Caterpillar/CM20200217-614d5-d9430?wid=1000&hei=600&op_sharpen=1&qlt=85" alt="Caterpillar 390F L Excavator"/>
-      <div class="featured-img-badge">⭐ Featured · Stock #GHE-2204</div>
-    </div>
-    <div class="reveal d2">
-      <div class="featured-badge-label">🏆 Certified Pre-Owned · 2022 Model Year</div>
-      <div class="featured-name">Caterpillar 390F L<br>Hydraulic Excavator</div>
-      <p class="featured-sub">The Cat 390F L is one of the most capable large excavators ever built. Powered by the Cat C18 ACERT engine producing 524 HP, it delivers the digging power and reach needed for mining, aggregate, large-scale civil, and heavy construction — all while meeting EPA Tier 4 Final emission standards.</p>
-      <div class="feat-spec-grid">
-        <div class="feat-spec-box"><label>Net Power</label><value>391 kW / 524 HP</value></div>
-        <div class="feat-spec-box"><label>Operating Weight</label><value>87,906 kg</value></div>
-        <div class="feat-spec-box"><label>Max Dig Depth</label><value>10.75 m (35 ft 3 in)</value></div>
-        <div class="feat-spec-box"><label>Max Horizontal Reach</label><value>15.73 m (51 ft 7 in)</value></div>
-        <div class="feat-spec-box"><label>Bucket Capacity</label><value>2.2 m³ (2.9 yd³)</value></div>
-        <div class="feat-spec-box"><label>Fuel Tank</label><value>1,241 L (328 US gal)</value></div>
+<!-- USED INVENTORY -->
+<section style="padding:5rem;background:var(--steel-3)" id="used">
+  <div class="section-label reveal"><span>Used Inventory</span></div>
+  <h2 class="section-title reveal d1">Quality <em>Pre-Owned Units</em></h2>
+  <p class="reveal d2" style="color:var(--muted);margin-top:.8rem;margin-bottom:2.5rem;max-width:600px">Used chassis with new vacuum modules, certified pre-owned units, and quality pre-owned trucks. All inspected. Call Stan for immediate availability.</p>
+
+  <div class="truck-grid">
+
+    <div class="truck-card span2 reveal">
+      <div class="truck-badge badge-new">Short Build Times</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/inventory/10-15-25-Kenworth-in.jpg" alt="Kenworth New Tank Assembly"/>
       </div>
-      <div class="feat-full-table">
-        <h4>Complete Engine &amp; Hydraulic Data</h4>
-        <div class="feat-table-grid">
-          <div class="feat-table-row"><span>Engine Model</span><span>Cat C18 ACERT</span></div>
-          <div class="feat-table-row"><span>Cylinders</span><span>6 in-line</span></div>
-          <div class="feat-table-row"><span>Displacement</span><span>18.1 L / 1,104 in³</span></div>
-          <div class="feat-table-row"><span>Max Drawbar Pull</span><span>590 kN / 132,637 lbf</span></div>
-          <div class="feat-table-row"><span>Swing Torque</span><span>259,948 N·m</span></div>
-          <div class="feat-table-row"><span>Swing Speed</span><span>6.2 rpm</span></div>
-          <div class="feat-table-row"><span>Max Travel Speed</span><span>4.5 km/h</span></div>
-          <div class="feat-table-row"><span>Track Width (std)</span><span>650 mm / 25.6 in</span></div>
-          <div class="feat-table-row"><span>Boom Length</span><span>7.62 m / 25 ft</span></div>
-          <div class="feat-table-row"><span>Stick Length</span><span>3.50 m / 11 ft 6 in</span></div>
-          <div class="feat-table-row"><span>Shipping Length</span><span>14.5 m / 47 ft 7 in</span></div>
-          <div class="feat-table-row"><span>Emission Standard</span><span>EPA Tier 4 Final</span></div>
+      <div class="truck-body">
+        <div class="truck-type">Kenworth · Built in Canada</div>
+        <div class="truck-name">Short Build Times Available — Built in Canada Products</div>
+        <div class="truck-footer">
+          <div style="font-size:.82rem;color:var(--muted)">New tank assembly on quality chassis · Fast turnaround</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Enquire</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/inventory/337-short-build-times-available-for-built-in-canada-products" target="_blank">Details →</a>
+          </div>
         </div>
       </div>
-      <div class="feat-price-wrap">
-        <div class="feat-price">$1,240,000</div>
-        <div class="feat-price-note">CAD · 3,204 hrs · Financing OAC</div>
+    </div>
+
+    <div class="truck-card reveal d1">
+      <div class="truck-badge badge-used">Used</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/inventory/NewTank-UsedChassis-intro.jpg" alt="New Tank Used Chassis"/>
       </div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap">
-        <button class="btn-yellow" onclick="goto('contact')">Request Viewing</button>
-        <button class="btn-outline" onclick="goto('contact')">Get Financing Quote</button>
+      <div class="truck-body">
+        <div class="truck-type">New Module · Used Chassis</div>
+        <div class="truck-name">New Vacuum Module on Slightly Used Chassis</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Quick Turnaround!</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Enquire</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/inventory/335-new-vacuum-module-on-a-slightly-used-chassis-quick-turnaround" target="_blank">Details</a>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="truck-card reveal d2">
+      <div class="truck-badge badge-used">Used</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/inventory/Tandem-Peterbilts-with-CODE-Tanks-intro.jpg" alt="2021 Tandem Peterbilts"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Peterbilt · 2021 · Available Now</div>
+        <div class="truck-name">2021 Tandem Peterbilt's w/Code Tanks</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Available Now</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Enquire</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/inventory/345-2021-tandem-peterbilt-s-w-code-tanks-available-now" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="truck-card reveal">
+      <div class="truck-badge badge-used">Used</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/inventory/2020-Rival-Automatic-Hydro-Ex-intro.jpg" alt="2020 Rival Hydro Ex"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Hydro Excavator · 2020</div>
+        <div class="truck-name">2020 Rival Automatic Hydro Excavator</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Automatic · Ready to Work</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Enquire</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/inventory/314-2020-rival-automatic-hydro-ex" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="truck-card reveal d1">
+      <div class="truck-badge badge-used">Used</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/inventory/2014WS-Tridrive-intro.jpg" alt="2014 Western Star Tridrive"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Western Star · 2014</div>
+        <div class="truck-name">2014 Western Star Tridrive Code Unit</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Tridrive · Code Tank</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Enquire</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/inventory/344-2014-western-star-tridrive-code-unit" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="truck-card reveal d2">
+      <div class="truck-badge badge-used">Used</div>
+      <div class="truck-img-wrap">
+        <img class="truck-img" src="https://canvactrucks.com/images/inventory/2012-Western-Star-Tri-Drive-intro.jpg" alt="2012 Western Star Tri Drive"/>
+      </div>
+      <div class="truck-body">
+        <div class="truck-type">Western Star · 2012</div>
+        <div class="truck-name">2012 Western Star Tri Drive Hydro Vac</div>
+        <div class="truck-footer">
+          <div style="font-size:.78rem;color:var(--muted)">Tri Drive · Hydro Vac</div>
+          <div style="display:flex;gap:.5rem">
+            <button class="truck-btn" onclick="goto('contact')">Enquire</button>
+            <a class="truck-btn-ghost" href="https://canvactrucks.com/inventory/326-2012-western-star-tri-drive" target="_blank">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center;margin-top:2.5rem" class="reveal">
+    <a href="https://canvactrucks.com/inventory" target="_blank" class="btn-red" style="display:inline-block;text-decoration:none">View All Used Inventory →</a>
   </div>
 </section>
 
-<!-- WHY GEORGE'S -->
-<section class="why" id="why">
-  <div class="section-label reveal"><span>Why Choose Us</span></div>
-  <h2 class="section-title reveal d1">George's <em>Difference</em></h2>
-  <div class="why-grid">
-    <div class="why-img-wrap reveal">
-      <img class="why-img" src="https://www.komatsu.com/content/dam/komatsu/websites/global/images/equipment-product/marketing/dozers/crawler-dozers/d375/414546_d375a-8-tier-4-final-action-3-web.jpg" alt="Komatsu D375A-8 dozer working on site"/>
-      <div class="why-corner"><span class="num">35+</span><span class="lbl">Years Serving<br>Ontario</span></div>
+<!-- ABOUT / WHY CANVAC -->
+<section class="about-strip" id="about">
+  <div class="section-label reveal"><span>Why CANVAC</span></div>
+  <h2 class="section-title reveal d1">A Canadian Company <em>For Canada</em></h2>
+  <div class="about-grid">
+    <div class="about-card reveal">
+      <span class="about-icon">🍁</span>
+      <div class="about-card-title">Canada Strong</div>
+      <p class="about-card-desc">CANVAC is 100% dedicated to the Canadian market. We source, spec, and price our products specifically for Canadian operators, regulations, and conditions — including cold weather packages.</p>
     </div>
-    <div class="why-points reveal d2">
-      <div class="why-point"><div class="why-num">01</div><div><div class="why-title">Honest Deals — No Games</div><p class="why-desc">George started this business with a handshake and that's still how we operate. Transparent pricing, fair trade-in appraisals, and zero hidden fees. What you see is what you get.</p></div></div>
-      <div class="why-point"><div class="why-num">02</div><div><div class="why-title">We Come to You</div><p class="why-desc">Our four mobile service rigs run licensed mechanics across Ontario. Preventive maintenance, breakdowns, and full overhauls done on-site so your downtime stays near zero.</p></div></div>
-      <div class="why-point"><div class="why-num">03</div><div><div class="why-title">12,000+ Parts in Stock</div><p class="why-desc">OEM and quality aftermarket parts for Cat, Komatsu, Deere, Volvo, Liebherr, and more. Most parts same-day. Because a machine waiting on parts is money left on the table.</p></div></div>
-      <div class="why-point"><div class="why-num">04</div><div><div class="why-title">Rent-to-Own Built for You</div><p class="why-desc">Every rental dollar applies toward purchase. We structure the plan around your cash flow, project timeline, and tax situation — not ours.</p></div></div>
+    <div class="about-card reveal d1">
+      <span class="about-icon">💰</span>
+      <div class="about-card-title">Factory-Direct Value</div>
+      <p class="about-card-desc">Through special factory discounts and strict overhead control, in many cases we sell at or below factory-direct pricing — while managing your entire order from spec to delivery.</p>
     </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="section-label reveal"><span>What We Offer</span></div>
-  <h2 class="section-title reveal d1">Full-Service <em>Support</em></h2>
-  <div class="srv-grid">
-    <div class="srv reveal"><span class="srv-icon">🔧</span><div class="srv-title">Service &amp; Repair</div><p class="srv-desc">Factory-trained technicians. Four mobile service rigs across Ontario. Hydraulics, undercarriage, electrical, and powertrains — we fix it all on-site or in our shop.</p></div>
-    <div class="srv reveal d1"><span class="srv-icon">🔩</span><div class="srv-title">Parts Department</div><p class="srv-desc">12,000+ OEM and aftermarket parts in stock. Overnight shipping across Ontario and Quebec. Our parts counter is staffed 6 days a week.</p></div>
-    <div class="srv reveal d2"><span class="srv-icon">📋</span><div class="srv-title">Inspections &amp; Appraisals</div><p class="srv-desc">150-point pre-purchase inspections with full written reports. Fair market trade-in appraisals backed by current auction data and 35 years of market knowledge.</p></div>
-    <div class="srv reveal d3"><span class="srv-icon">🚛</span><div class="srv-title">Low-Bed Transport</div><p class="srv-desc">We handle transport permits, route surveys, pilot cars, and escorts. Equipment delivered anywhere in Canada. Oversized load specialists on staff.</p></div>
-  </div>
-</section>
-
-<!-- BRANDS -->
-<section class="brands">
-  <div class="brands-inner">
-    <div class="brands-label">Brands We Carry &amp; Service</div>
-    <div class="brands-list">
-      <span class="brand-name">Caterpillar</span>
-      <span class="brand-name">Komatsu</span>
-      <span class="brand-name">John Deere</span>
-      <span class="brand-name">Volvo CE</span>
-      <span class="brand-name">Liebherr</span>
-      <span class="brand-name">Hitachi</span>
-      <span class="brand-name">Doosan</span>
-      <span class="brand-name">Case CE</span>
-      <span class="brand-name">Dynapac</span>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="section-label reveal"><span>What Contractors Say</span></div>
-  <h2 class="section-title reveal d1">Trusted by the <em>Trades</em></h2>
-  <div class="test-grid">
-    <div class="test-card reveal">
-      <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="test-quote">Bought two Cat 336s and a 872G grader from George's over the past three years. Every machine was exactly as described in the spec sheets, pricing was fair, and their shop sorted a hydraulic warranty issue in two days flat. No fuss.</div>
-      <div class="test-author"><strong>Dave Kowalski</strong><span>Kowalski Earthworks Ltd. · Sudbury, ON</span></div>
-    </div>
-    <div class="test-card reveal d1">
-      <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="test-quote">Their mobile rig showed up at our remote site north of Timmins, diagnosed the undercarriage failure on our Komatsu D375, had the parts on their truck, and had us back running by end of shift. That kind of service is worth everything.</div>
-      <div class="test-author"><strong>Linda Tran</strong><span>Granite Ridge Construction · Timmins, ON</span></div>
-    </div>
-    <div class="test-card reveal d2">
-      <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <div class="test-quote">The rent-to-own on the Liebherr LTM crane saved our project. Six-month rental, every dollar applied toward purchase, and George's worked the payment schedule around our progress billing cycle. Zero headaches.</div>
-      <div class="test-author"><strong>Rob Sinclair</strong><span>Sinclair Steel Erectors Inc. · Barrie, ON</span></div>
+    <div class="about-card reveal d2">
+      <span class="about-icon">🔧</span>
+      <div class="about-card-title">Refurbish Your Equipment</div>
+      <p class="about-card-desc">Sometimes the best option is to refurbish your existing equipment when your vacuum system is good but the chassis is tired. We can help with new tank assemblies on used chassis.</p>
     </div>
   </div>
 </section>
 
 <!-- FINANCING -->
 <section class="financing" id="financing">
-  <div class="section-label reveal"><span>Financing Options</span></div>
-  <h2 class="section-title reveal d1">Built Around <em>Your Budget</em></h2>
+  <div class="section-label reveal"><span>Financing &amp; Lease-to-Own</span></div>
+  <h2 class="section-title reveal d1">Flexible <em>Finance Solutions</em></h2>
+  <p class="reveal d2" style="color:var(--muted);margin-top:.8rem;max-width:600px">We have very competitive finance and lease-to-own programs available with top Canadian leasing companies. We always suggest you use your own sources as well and choose the best fit after considering all options.</p>
+
   <div class="fin-grid">
-    <div class="fin-card reveal">
-      <span class="fin-icon">💳</span>
-      <div class="fin-title">Equipment Loans</div>
-      <p class="fin-desc">Competitive fixed-rate loans from 12 to 84 months. Rates from prime + 1% OAC. Approvals in as little as 24 hours for qualified buyers. We work with major lenders across Canada.</p>
+    <div>
+      <div class="fin-card reveal">
+        <div class="fin-logo">Money in Motion</div>
+        <div class="fin-title">Headquartered in Sudbury, Ontario</div>
+        <p class="fin-desc">Money in Motion has many locations across Canada with local bi-lingual representatives available immediately to help you with your finance and leasing needs. Call today for an immediate referral to a representative in your area.</p>
+        <a class="fin-link" href="https://moneyinmotion.net/" target="_blank">Visit moneyinmotion.net →</a>
+      </div>
+      <div class="fin-card reveal d1" style="margin-top:2px">
+        <div class="fin-logo">Lakes Leasing</div>
+        <div class="fin-title">Additional Leasing Partner</div>
+        <p class="fin-desc">Lakes Leasing Corporation offers additional financing options. We work with multiple lenders to ensure you get the most competitive rates and terms for your vacuum equipment purchase.</p>
+        <a class="fin-link" href="http://www.lakesleasing.ca/" target="_blank">Visit lakesleasing.ca →</a>
+      </div>
     </div>
-    <div class="fin-card highlight reveal d1">
-      <span class="fin-icon">🔄</span>
-      <div class="fin-title">Rent-to-Own</div>
-      <p class="fin-desc">Put every rental dollar toward ownership. Custom terms from 12–60 months. Ideal for contractors who want to try before they buy or need to match project cash flow.</p>
-    </div>
-    <div class="fin-card reveal d2">
-      <span class="fin-icon">📊</span>
-      <div class="fin-title">Operating Leases</div>
-      <p class="fin-desc">Keep equipment off your balance sheet with flexible operating lease structures. Preserve capital, manage tax exposure, and return or upgrade equipment at end of term.</p>
+    <div class="reveal d2">
+      <div style="background:var(--steel-2);padding:2rem;border-top:3px solid var(--red);margin-bottom:2px">
+        <h3 style="font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;margin-bottom:.8rem">Equipment Financing Available For:</h3>
+        <div class="fin-types">
+          <div class="fin-type-tag">New Vacuum Trucks</div>
+          <div class="fin-type-tag">Used Equipment</div>
+          <div class="fin-type-tag">Hydro Excavators</div>
+          <div class="fin-type-tag">Portable Restroom Trucks</div>
+          <div class="fin-type-tag">Slide-In Units</div>
+          <div class="fin-type-tag">Vacuum Trailers</div>
+          <div class="fin-type-tag">Water Trucks</div>
+          <div class="fin-type-tag">Cab &amp; Chassis</div>
+        </div>
+      </div>
+      <div style="background:var(--steel-2);padding:1.5rem;border-top:1px solid var(--steel-4)">
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1rem">Call Stan or George today for an immediate referral to a local financing representative. Whether you're a startup or an established operator, we'll find the right fit.</p>
+        <button class="truck-btn" onclick="goto('contact')" style="width:100%;padding:.9rem">Talk to Us About Financing →</button>
+      </div>
     </div>
   </div>
-  <div style="text-align:center;margin-top:2.5rem" class="reveal">
-    <p style="color:var(--muted);margin-bottom:1.2rem;font-size:.9rem">All financing is subject to credit approval. Rates and terms vary. Speak to one of our equipment finance specialists today.</p>
-    <button class="btn-yellow" onclick="goto('contact')">Talk to Our Finance Team →</button>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label reveal"><span>Customer Shout-Outs</span></div>
+  <h2 class="section-title reveal d1">Trusted Across <em>Canada</em></h2>
+  <p class="reveal d2" style="color:var(--muted);margin-top:.8rem;margin-bottom:0;max-width:550px">We're always grateful to clients who take the time to share their experience. Here are some of the teams running CANVAC equipment.</p>
+
+  <div class="test-grid">
+    <div class="test-card reveal">
+      <div class="test-img-wrap">
+        <img class="test-img" src="https://canvactrucks.com/images/testimonials/Groupe-Solutech-slidein.jpg" alt="Groupe Solutech"/>
+      </div>
+      <div class="test-company">Groupe Solutech</div>
+      <div class="test-location">Drains &amp; Sewers · Quebec</div>
+      <p class="test-quote">Running CANVAC slide-in units for their drains and sewers operation in Quebec. A great example of Canadian operators choosing Canadian-sourced equipment.</p>
+    </div>
+    <div class="test-card reveal d1">
+      <div class="test-img-wrap">
+        <img class="test-img" src="https://canvactrucks.com/images/testimonials/ApexEnviro-2014-Pete-intro.jpg" alt="Apex Environmental"/>
+      </div>
+      <div class="test-company">Apex Environmental Services Inc.</div>
+      <div class="test-location">Edward DeJong · Ontario</div>
+      <p class="test-quote">Running a 2014 Peterbilt sourced through CANVAC. Ed has been a loyal client and we're proud to support his environmental services operation.</p>
+    </div>
+    <div class="test-card reveal d2">
+      <div class="test-img-wrap">
+        <img class="test-img" src="https://canvactrucks.com/images/testimonials/GibsonTest-wc.jpg" alt="Gibson's Select Septic"/>
+      </div>
+      <div class="test-company">Gibson's Select Septic</div>
+      <div class="test-location">Alton Gibson · Ontario</div>
+      <p class="test-quote">A long-standing client running quality CANVAC-sourced vacuum equipment for residential and commercial septic services. Quality and reliability are everything in this business.</p>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-img-wrap">
+        <img class="test-img" src="https://canvactrucks.com/images/testimonials/FranksPumpingDSC03317wprev.jpg" alt="Frank's Pumping"/>
+      </div>
+      <div class="test-company">Frank's Pumping</div>
+      <div class="test-location">Ontario</div>
+      <p class="test-quote">Frank's team relies on CANVAC-sourced equipment for their pumping operation. When you need reliable vacuum equipment, the truck has to work every time.</p>
+    </div>
+    <div class="test-card reveal d1">
+      <div class="test-img-wrap">
+        <img class="test-img" src="https://canvactrucks.com/images/testimonials/Ardiel-Septic-testimonial.jpg" alt="Ardiel Septic"/>
+      </div>
+      <div class="test-company">Ardiel Septic</div>
+      <div class="test-location">Giles Ardiel · Ontario</div>
+      <p class="test-quote">Giles Ardiel of Ardiel Septic has been a trusted CANVAC customer. His operation runs Canadian equipment built for Canadian conditions — just the way it should be.</p>
+    </div>
+    <div class="test-card reveal d2">
+      <div class="test-img-wrap">
+        <img class="test-img" src="https://canvactrucks.com/images/testimonials/EcoZero-w.jpg" alt="EcoZero"/>
+      </div>
+      <div class="test-company">EcoZero</div>
+      <div class="test-location">Jason Yon · Canada</div>
+      <p class="test-quote">Jason Yon and the EcoZero team are running CANVAC-sourced equipment for their environmental services. Proud to support innovative Canadian environmental operators.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--steel-4)" class="reveal">
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem">Have a CANVAC truck working hard for you? We'd love to hear about it.</p>
+    <button class="btn-outline" onclick="goto('contact')">📧 Send Us Your Story &amp; Photo</button>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="contact-section" id="contact">
   <div class="contact-grid">
-    <div class="contact-info reveal">
+    <div class="reveal">
       <div class="section-label"><span>Get in Touch</span></div>
-      <h2 class="section-title">Ready to Find<br>Your <em>Next Machine?</em></h2>
-      <p>Tell us what you need and we'll find it — or build a rental, rent-to-own, or financing package around your project. George or one of our equipment specialists will respond within the hour during business hours.</p>
-      <div class="contact-details">
-        <div class="cd-row"><strong>Call</strong>(705) 480-5800</div>
-        <div class="cd-row"><strong>Toll</strong>1-800-555-GEORGE</div>
-        <div class="cd-row"><strong>Email</strong>george@georgeshe.ca</div>
-        <div class="cd-row"><strong>Yard</strong>4800 Industrial Drive, North Bay, ON P1B 4Z9</div>
-        <div class="cd-row"><strong>Hours</strong>Mon–Fri 7:00 am – 6:00 pm · Sat 8:00 am – 4:00 pm</div>
-        <div class="cd-row"><strong>After Hrs</strong>Emergency service line available 24/7</div>
+      <h2 class="section-title">Ready to Find Your <em>Next Truck?</em></h2>
+      <p>Call Stan or George directly to discuss your requirements — or offer products you'd like us to promote. We're always happy to talk about our great industry.</p>
+      <div class="contact-reps">
+        <div class="rep-card">
+          <img class="rep-img" src="https://www.canvactrucks.com/images/sitegraphix/StanContact-e.jpg" alt="Stan Jones" onerror="this.style.display='none'"/>
+          <div class="rep-name">Stan Jones</div>
+          <div class="rep-role">Founder &amp; Owner</div>
+          <a class="rep-phone" href="tel:12898807888">📞 289-880-7888</a>
+        </div>
+        <div class="rep-card">
+          <div style="width:60px;height:60px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:.8rem">👤</div>
+          <div class="rep-name">George Guppy</div>
+          <div class="rep-role">Partner — Sourcing &amp; Sales</div>
+          <a class="rep-phone" href="tel:17052620843">📞 705-262-0843</a>
+        </div>
       </div>
     </div>
     <div class="contact-form reveal d2">
@@ -935,19 +1035,29 @@ footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5
       </div>
       <select class="form-select">
         <option value="" disabled selected>What are you looking for? *</option>
-        <option>Buy Equipment</option>
-        <option>Rent Equipment</option>
-        <option>Rent-to-Own</option>
-        <option>Equipment Financing</option>
-        <option>Service / Repair</option>
-        <option>Parts Inquiry</option>
-        <option>Trade-In Appraisal</option>
-        <option>Low-Bed Transport</option>
+        <option>New Vacuum Truck</option>
+        <option>Used Equipment</option>
+        <option>Hydro Excavator</option>
+        <option>Portable Restroom Truck</option>
+        <option>Slide-In Unit</option>
+        <option>Vacuum Trailer</option>
+        <option>DOT Certified Hazmat Truck</option>
+        <option>Water Truck</option>
+        <option>Financing Information</option>
+        <option>Refurbish My Current Equipment</option>
+        <option>Other / General Inquiry</option>
+      </select>
+      <select class="form-select">
+        <option value="" disabled selected>How did you hear about us?</option>
+        <option>Google Search</option>
+        <option>Social Media</option>
+        <option>Word of Mouth</option>
+        <option>Returning Customer</option>
         <option>Other</option>
       </select>
-      <textarea class="form-textarea" placeholder="Tell us about your equipment needs, machine type, job site, project duration, or any other details that would help us find the right solution…"></textarea>
-      <button class="form-submit">Send Inquiry →</button>
-      <p class="form-note">Typically respond within 1 business hour · Mon–Fri · Emergency line available 24/7 at (705) 480-5800</p>
+      <textarea class="form-textarea" placeholder="Tell us what you need — truck type, tank size, chassis preference, budget, timeline, or anything else…"></textarea>
+      <button class="form-submit" type="button">Send Inquiry →</button>
+      <p class="form-note">Stan or George will respond promptly — usually the same business day.</p>
     </div>
   </div>
 </section>
@@ -956,81 +1066,65 @@ footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="footer-logo"><span class="ico">🏗️</span><div class="txt">George's <span>Heavy Equipment</span></div></div>
-      <p>Family-owned and operated since 1989. We stock, sell, rent, and service heavy equipment across Ontario and deliver coast to coast. If it moves dirt, rock, or steel — we know it.</p>
+      <a class="footer-logo" href="#">
+        <span class="ico">🚛</span>
+        <div class="txt">CANVAC <span>Trucks &amp; Equipment</span></div>
+      </a>
+      <p>Canadian Vacuum Trucks &amp; Equipment. A Canadian company dedicated to the Canadian market. Septic trucks, hydro excavators, portable restroom trucks, vacuum trailers, slide-ins, and more.</p>
     </div>
     <div class="footer-col">
       <h4>Equipment</h4>
       <ul>
-        <li><a href="#">Excavators</a></li>
-        <li><a href="#">Bulldozers / Dozers</a></li>
-        <li><a href="#">Mobile Cranes</a></li>
-        <li><a href="#">Wheel Loaders</a></li>
-        <li><a href="#">Motor Graders</a></li>
-        <li><a href="#">Soil Compactors</a></li>
-        <li><a href="#">Off-Highway Trucks</a></li>
+        <li><a href="https://canvactrucks.com/equipment" target="_blank">New Equipment</a></li>
+        <li><a href="https://canvactrucks.com/inventory" target="_blank">Used Inventory</a></li>
+        <li><a href="#categories">Hydro Excavators</a></li>
+        <li><a href="#categories">Septic Trucks</a></li>
+        <li><a href="#categories">Portable Restroom Trucks</a></li>
+        <li><a href="#categories">Slide-In Units</a></li>
+        <li><a href="#categories">Vacuum Trailers</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="#">Mobile Service</a></li>
-        <li><a href="#">Parts Counter</a></li>
-        <li><a href="#">Pre-Purchase Inspection</a></li>
-        <li><a href="#">Low-Bed Transport</a></li>
-        <li><a href="#">Equipment Financing</a></li>
-        <li><a href="#">Rent-to-Own</a></li>
-        <li><a href="#">Trade-In Appraisal</a></li>
+        <li><a href="#financing">Financing</a></li>
+        <li><a href="#financing">Lease-to-Own</a></li>
+        <li><a href="#about">Equipment Refurbishment</a></li>
+        <li><a href="#contact">Custom Builds</a></li>
+        <li><a href="https://canvactrucks.com/news" target="_blank">News</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <div class="fcr"><strong>Tel</strong>(705) 480-5800</div>
-      <div class="fcr"><strong>Toll</strong>1-800-555-GEORGE</div>
-      <div class="fcr"><strong>Email</strong>george@georgeshe.ca</div>
-      <div class="fcr"><strong>Yard</strong>4800 Industrial Drive<br>North Bay, ON P1B 4Z9</div>
-      <div class="fcr"><strong>Hours</strong>M–F 7am–6pm<br>Sat 8am–4pm</div>
+      <div class="fcr"><strong>Stan</strong><a href="tel:12898807888" style="color:var(--muted);text-decoration:none">289-880-7888</a></div>
+      <div class="fcr"><strong>George</strong><a href="tel:17052620843" style="color:var(--muted);text-decoration:none">705-262-0843</a></div>
+      <div class="fcr"><strong>Web</strong><a href="https://canvactrucks.com" target="_blank" style="color:var(--muted);text-decoration:none">canvactrucks.com</a></div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 George's Heavy Equipment Ltd. All rights reserved. · <a href="#">Privacy</a> · <a href="#">Terms</a></span>
-    <span>Serving Ontario &amp; All of Canada Since 1989 🍁</span>
+    <span>© 2026 Canadian Vacuum Trucks &amp; Equipment (CANVAC) · All rights reserved.</span>
+    <span>We are <span class="maple-leaf">Canada Strong</span> 🍁</span>
   </div>
 </footer>
 
 <script>
-// ── SMOOTH SCROLL (global, available to inline onclick handlers) ──
+// Global helpers (available to inline onclick handlers before DOM ready)
 function goto(id){
   var el = document.getElementById(id);
   if(el) el.scrollIntoView({behavior:'smooth'});
 }
-
-// ── FILTER TABS (global, used by inline onclick) ──
 function setFilter(btn){
   document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
 }
 
-// ── TOGGLE FULL SPECS (global, used by inline onclick) ──
-function toggleSpecs(id, btn){
-  var panel = document.getElementById(id);
-  if(!panel) return;
-  var open = panel.classList.toggle('open');
-  btn.classList.toggle('active', open);
-  btn.textContent = open ? 'Hide Specs ▴' : 'Full Specs ▾';
-}
-
 document.addEventListener('DOMContentLoaded', function(){
 
-  // ── HAMBURGER MENU ──
+  // ── HAMBURGER ──
   var hamburger = document.getElementById('hamburger');
   var mobileNav = document.getElementById('mobileNav');
   var overlay   = document.getElementById('mobOverlay');
-
-  if(!hamburger || !mobileNav || !overlay){
-    console.warn('GHE: mobile nav elements missing');
-    return;
-  }
 
   function openMenu(){
     hamburger.classList.add('open');
@@ -1040,7 +1134,6 @@ document.addEventListener('DOMContentLoaded', function(){
     hamburger.setAttribute('aria-expanded','true');
     document.body.style.overflow = 'hidden';
   }
-
   function closeMenu(){
     hamburger.classList.remove('open');
     mobileNav.classList.remove('open');
@@ -1050,81 +1143,51 @@ document.addEventListener('DOMContentLoaded', function(){
     document.body.style.overflow = '';
   }
 
-  // Toggle on hamburger click
   hamburger.addEventListener('click', function(){
     mobileNav.classList.contains('open') ? closeMenu() : openMenu();
   });
-
-  // Close on overlay click
   overlay.addEventListener('click', closeMenu);
-
-  // Close on any link inside the drawer
-  mobileNav.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', closeMenu);
-  });
-
-  // Quote button inside drawer
-  var mobQuote = document.getElementById('mobQuote');
-  if(mobQuote){
-    mobQuote.addEventListener('click', function(){
-      closeMenu();
-      setTimeout(function(){ goto('contact'); }, 340);
-    });
-  }
-
-  // Escape key closes menu
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && mobileNav.classList.contains('open')) closeMenu();
-  });
+  mobileNav.querySelectorAll('a').forEach(function(l){ l.addEventListener('click', closeMenu); });
+  var mq = document.getElementById('mobQuote');
+  if(mq) mq.addEventListener('click', function(){ closeMenu(); setTimeout(function(){ goto('contact'); }, 340); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
 
   // ── NAV SCROLL SHADOW ──
   var nav = document.querySelector('nav');
   window.addEventListener('scroll', function(){
-    if(window.scrollY > 10){
-      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.5)';
-    } else {
-      nav.style.boxShadow = 'none';
-    }
+    nav.style.boxShadow = window.scrollY > 10 ? '0 4px 24px rgba(0,0,0,.6)' : 'none';
   }, { passive: true });
 
   // ── SCROLL REVEAL ──
   var ro = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        ro.unobserve(e.target);
-      }
+      if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
 
   // ── STAT COUNTERS ──
   function animateCount(el, target){
-    var dur = 1800;
-    var t0 = performance.now();
-    var fmt = target >= 1000
-      ? function(n){ return Math.floor(n/1000) + 'k+'; }
-      : function(n){ return n + (target > 10 ? '+' : ''); };
+    var dur = 1600; var t0 = performance.now();
+    var suffix = target === 0 ? '%' : '+';
     (function step(now){
       var p    = Math.min((now - t0) / dur, 1);
       var ease = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(Math.floor(ease * target));
+      el.textContent = Math.floor(ease * target) + suffix;
       if(p < 1) requestAnimationFrame(step);
-      else el.textContent = fmt(target);
+      else el.textContent = target + suffix;
     })(t0);
   }
-
   var statsBar = document.querySelector('.stats-bar');
   if(statsBar){
-    var statsObserver = new IntersectionObserver(function(entries){
+    new IntersectionObserver(function(entries, obs){
       if(entries[0].isIntersecting){
         document.querySelectorAll('.stat-num[data-target]').forEach(function(el){
           animateCount(el, parseInt(el.dataset.target, 10));
         });
-        statsObserver.disconnect();
+        obs.disconnect();
       }
-    }, { threshold: 0.5 });
-    statsObserver.observe(statsBar);
+    }, { threshold: 0.5 }).observe(statsBar);
   }
 
 }); // end DOMContentLoaded
