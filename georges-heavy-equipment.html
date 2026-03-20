@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>George's Heavy Equipment — Built for the Job</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --yellow: #f5a800;
+  --yellow-dark: #d98f00;
+  --orange: #e06000;
+  --steel: #1c1f22;
+  --steel-2: #23272b;
+  --steel-3: #2d3238;
+  --steel-4: #383e46;
+  --concrete: #4a5058;
+  --light-concrete: #8a9099;
+  --offwhite: #f0ece5;
+  --white: #fafaf8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--steel);
+  color: var(--white);
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
+  display: flex; align-items: stretch;
+  background: var(--steel);
+  border-bottom: 3px solid var(--yellow);
+  animation: slideDown 0.6s ease forwards;
+}
+
+.nav-brand {
+  display: flex; align-items: center; gap: 0;
+  padding: 0 2.5rem;
+  background: var(--yellow);
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  padding-right: 3rem;
+  text-decoration: none;
+}
+
+.nav-brand-icon { font-size: 1.6rem; margin-right: 0.6rem; }
+
+.nav-brand-text {
+  display: flex; flex-direction: column; line-height: 1;
+}
+.nav-brand-text .top {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(0,0,0,0.6);
+}
+.nav-brand-text .name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--steel);
+}
+
+.nav-links {
+  display: flex; align-items: center; gap: 0;
+  list-style: none; padding: 0 1rem;
+}
+.nav-links a {
+  display: block; padding: 1.1rem 1.3rem;
+  font-family: 'Oswald', sans-serif; font-size: 0.78rem;
+  font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--light-concrete); text-decoration: none;
+  transition: color 0.2s;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -3px;
+}
+.nav-links a:hover { color: var(--yellow); border-bottom-color: var(--yellow); }
+
+.nav-right {
+  display: flex; align-items: center; gap: 1rem;
+  margin-left: auto; padding: 0 2rem;
+}
+
+.nav-phone {
+  font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600;
+  color: var(--yellow); letter-spacing: 0.05em; text-decoration: none;
+}
+
+.nav-quote {
+  background: var(--yellow); color: var(--steel);
+  padding: 0.55rem 1.4rem;
+  font-family: 'Oswald', sans-serif; font-size: 0.78rem;
+  font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  border: none; cursor: pointer; transition: background 0.2s;
+  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+}
+.nav-quote:hover { background: var(--yellow-dark); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 8rem 5rem 5rem;
+  overflow: hidden;
+}
+
+/* Diagonal split background */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: var(--steel-2);
+}
+.hero-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(245,168,0,0.022) 40px,
+      rgba(245,168,0,0.022) 41px
+    );
+}
+.hero-bg::after {
+  content: '';
+  position: absolute; right: 0; top: 0;
+  width: 52%; height: 100%;
+  background: linear-gradient(135deg, var(--steel-3) 0%, var(--steel-2) 100%);
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Big decorative equipment emoji in hero right */
+.hero-machine {
+  position: absolute; right: 4%; top: 50%;
+  transform: translateY(-50%);
+  font-size: 18vw; z-index: 1;
+  opacity: 0.12;
+  filter: drop-shadow(0 0 60px rgba(245,168,0,0.3));
+  animation: machineFade 1s ease 0.3s both;
+  user-select: none;
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  margin-bottom: 1.5rem;
+  animation: fadeLeft 0.7s ease 0.1s both;
+}
+.hero-eyebrow-line {
+  width: 40px; height: 3px; background: var(--yellow);
+}
+.hero-eyebrow span {
+  font-family: 'Oswald', sans-serif; font-size: 0.72rem;
+  font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.hero-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(3.5rem, 7vw, 7.5rem);
+  font-weight: 700; line-height: 0.95;
+  text-transform: uppercase; letter-spacing: -0.01em;
+  animation: fadeLeft 0.7s ease 0.2s both;
+}
+.hero-title .line2 {
+  color: var(--yellow);
+  -webkit-text-stroke: 0px;
+}
+.hero-title .outline {
+  -webkit-text-stroke: 2px rgba(255,255,255,0.15);
+  color: transparent;
+  display: block;
+}
+
+.hero-desc {
+  margin-top: 1.5rem; max-width: 480px;
+  color: var(--light-concrete); line-height: 1.8; font-size: 1rem;
+  animation: fadeLeft 0.7s ease 0.35s both;
+}
+
+.hero-actions {
+  display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+  animation: fadeLeft 0.7s ease 0.5s both;
+}
+
+.btn-yellow {
+  background: var(--yellow); color: var(--steel);
+  padding: 0.9rem 2.4rem; border: none;
+  font-family: 'Oswald', sans-serif; font-size: 0.9rem;
+  font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+  clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
+}
+.btn-yellow:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+
+.btn-outline {
+  background: transparent; color: var(--white);
+  padding: 0.9rem 2.4rem; border: 2px solid var(--steel-4);
+  font-family: 'Oswald', sans-serif; font-size: 0.9rem;
+  font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+.hero-badges {
+  display: flex; gap: 2.5rem; margin-top: 3.5rem;
+  animation: fadeLeft 0.7s ease 0.65s both;
+}
+.hero-badge-item { display: flex; align-items: center; gap: 0.6rem; }
+.badge-icon { font-size: 1.4rem; }
+.badge-text { font-size: 0.78rem; color: var(--light-concrete); line-height: 1.4; }
+.badge-text strong { display: block; color: var(--white); font-size: 0.9rem; }
+
+/* ── TICKER TAPE ── */
+.ticker {
+  background: var(--yellow); color: var(--steel);
+  overflow: hidden; padding: 0.7rem 0;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 28s linear infinite;
+  font-family: 'Oswald', sans-serif; font-size: 0.78rem;
+  font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+}
+.ticker-inner span { margin: 0 2.5rem; }
+.ticker-inner .dot { color: rgba(0,0,0,0.3); }
+
+/* ── CATEGORIES ── */
+.categories { padding: 5rem; background: var(--steel-2); }
+
+.section-header { margin-bottom: 3rem; }
+.section-label {
+  display: flex; align-items: center; gap: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+.section-label::before {
+  content: ''; display: block;
+  width: 4px; height: 22px; background: var(--yellow);
+}
+.section-label span {
+  font-family: 'Oswald', sans-serif; font-size: 0.72rem;
+  font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--yellow);
+}
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700; text-transform: uppercase; line-height: 1.1;
+}
+.section-title em { color: var(--yellow); font-style: normal; }
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px; background: var(--steel-4);
+}
+
+.cat-card {
+  background: var(--steel-3);
+  padding: 2rem 1.5rem;
+  text-align: center; cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  border-bottom: 3px solid transparent;
+  position: relative; overflow: hidden;
+}
+.cat-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--yellow);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.cat-card:hover { background: var(--steel-4); }
+.cat-card:hover::before { transform: scaleX(1); }
+
+.cat-icon { font-size: 2.4rem; display: block; margin-bottom: 0.8rem; }
+.cat-name {
+  font-family: 'Oswald', sans-serif; font-size: 0.88rem;
+  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.cat-count { font-size: 0.72rem; color: var(--light-concrete); margin-top: 0.2rem; }
+
+/* ── INVENTORY ── */
+.inventory { padding: 5rem; background: var(--steel); }
+
+.inventory-toolbar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
+}
+
+.filter-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.filter-btn {
+  background: var(--steel-3); color: var(--light-concrete);
+  border: 1px solid var(--steel-4);
+  padding: 0.4rem 1rem;
+  font-family: 'Oswald', sans-serif; font-size: 0.72rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--yellow); color: var(--steel); border-color: var(--yellow);
+}
+
+.sort-select {
+  background: var(--steel-3); color: var(--light-concrete);
+  border: 1px solid var(--steel-4); padding: 0.4rem 1rem;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.equip-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5px; background: var(--steel-4);
+}
+
+.equip-card {
+  background: var(--steel-2); cursor: pointer;
+  transition: background 0.25s;
+  position: relative; overflow: hidden;
+}
+.equip-card:hover { background: var(--steel-3); }
+
+.equip-card.featured-card {
+  grid-column: span 2;
+}
+
+.equip-badge-new {
+  position: absolute; top: 0; left: 0;
+  background: var(--yellow); color: var(--steel);
+  font-family: 'Oswald', sans-serif; font-size: 0.62rem;
+  font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  z-index: 2;
+}
+.equip-badge-sale {
+  position: absolute; top: 0; left: 0;
+  background: var(--orange); color: var(--white);
+  font-family: 'Oswald', sans-serif; font-size: 0.62rem;
+  font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  z-index: 2;
+}
+
+.equip-img {
+  height: 200px;
+  background: var(--steel-3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5.5rem;
+  position: relative; overflow: hidden;
+  border-bottom: 2px solid var(--steel-4);
+}
+.equip-card.featured-card .equip-img { height: 260px; font-size: 8rem; }
+
+.equip-img-bg {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent, transparent 20px,
+    rgba(255,255,255,0.012) 20px, rgba(255,255,255,0.012) 21px
+  );
+}
+
+.equip-body { padding: 1.4rem 1.6rem; }
+
+.equip-type {
+  font-family: 'Oswald', sans-serif; font-size: 0.62rem;
+  font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--yellow); margin-bottom: 0.3rem;
+}
+
+.equip-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.35rem; font-weight: 700; text-transform: uppercase;
+  line-height: 1.1; margin-bottom: 0.9rem;
+}
+.equip-card.featured-card .equip-name { font-size: 1.7rem; }
+
+.equip-specs {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; border: 1px solid var(--steel-4); margin-bottom: 1.2rem;
+}
+.equip-spec {
+  padding: 0.55rem 0.7rem; border-right: 1px solid var(--steel-4);
+  font-size: 0.7rem;
+}
+.equip-spec:last-child { border-right: none; }
+.equip-spec label {
+  display: block; color: var(--light-concrete); font-size: 0.62rem;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.1rem;
+}
+.equip-spec value {
+  font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 600;
+}
+
+.equip-footer {
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.equip-price-wrap {}
+.equip-price {
+  font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700;
+  color: var(--yellow);
+}
+.equip-price small {
+  font-size: 0.72rem; color: var(--light-concrete);
+  font-family: 'Source Sans 3', sans-serif; font-weight: 400;
+  display: block; margin-top: -2px;
+}
+
+.equip-actions { display: flex; gap: 0.5rem; }
+.equip-btn {
+  background: var(--yellow); color: var(--steel);
+  border: none; padding: 0.55rem 1.1rem;
+  font-family: 'Oswald', sans-serif; font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s;
+}
+.equip-btn:hover { background: var(--yellow-dark); }
+.equip-btn-ghost {
+  background: transparent; color: var(--light-concrete);
+  border: 1px solid var(--steel-4); padding: 0.55rem 1rem;
+  font-family: 'Oswald', sans-serif; font-size: 0.72rem;
+  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+}
+.equip-btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+
+/* ── WHY GEORGE'S ── */
+.why { background: var(--steel-2); padding: 5rem; }
+
+.why-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem;
+  align-items: center; margin-top: 3rem;
+}
+
+.why-visual {
+  position: relative;
+}
+.why-img-main {
+  background: var(--steel-3);
+  height: 420px; display: flex; align-items: center; justify-content: center;
+  font-size: 10rem; position: relative; overflow: hidden;
+  border-left: 4px solid var(--yellow);
+}
+.why-img-main::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg, transparent, transparent 30px,
+    rgba(245,168,0,0.03) 30px, rgba(245,168,0,0.03) 31px
+  );
+}
+.why-corner {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: var(--yellow); color: var(--steel);
+  padding: 1.2rem 1.6rem; text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+.why-corner .num { font-size: 2.2rem; font-weight: 700; line-height: 1; display: block; }
+.why-corner .lbl { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; }
+
+.why-points { display: flex; flex-direction: column; gap: 1.8rem; }
+
+.why-point {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding-bottom: 1.8rem; border-bottom: 1px solid var(--steel-4);
+}
+.why-point:last-child { border-bottom: none; padding-bottom: 0; }
+
+.why-point-num {
+  font-family: 'Oswald', sans-serif; font-size: 2rem; font-weight: 700;
+  color: var(--yellow); opacity: 0.3; line-height: 1; min-width: 2rem;
+  flex-shrink: 0;
+}
+.why-point-body {}
+.why-point-title {
+  font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem;
+}
+.why-point-desc { font-size: 0.88rem; color: var(--light-concrete); line-height: 1.75; }
+
+/* ── SERVICES STRIP ── */
+.services-strip {
+  background: var(--yellow); padding: 4rem 5rem;
+}
+
+.services-strip .section-label::before { background: var(--steel); }
+.services-strip .section-label span { color: var(--steel-2); }
+.services-strip .section-title { color: var(--steel); }
+
+.services-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; margin-top: 2.5rem;
+  background: rgba(0,0,0,0.15);
+}
+
+.srv {
+  background: rgba(0,0,0,0.07);
+  padding: 2rem 1.6rem;
+  transition: background 0.2s;
+}
+.srv:hover { background: rgba(0,0,0,0.14); }
+
+.srv-icon { font-size: 2rem; display: block; margin-bottom: 1rem; }
+.srv-title {
+  font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; color: var(--steel); margin-bottom: 0.5rem;
+}
+.srv-desc { font-size: 0.83rem; color: rgba(0,0,0,0.6); line-height: 1.7; }
+
+/* ── BRANDS ── */
+.brands { background: var(--steel-3); padding: 3.5rem 5rem; }
+.brands-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 2rem;
+}
+.brands-label {
+  font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--light-concrete); white-space: nowrap;
+}
+.brands-list { display: flex; gap: 2.5rem; flex-wrap: wrap; align-items: center; }
+.brand-name {
+  font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--concrete); transition: color 0.2s; cursor: default;
+}
+.brand-name:hover { color: var(--yellow); }
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--steel-2); padding: 5rem; }
+
+.test-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; margin-top: 3rem; background: var(--steel-4);
+}
+
+.test-card {
+  background: var(--steel-2); padding: 2rem;
+  transition: background 0.2s;
+}
+.test-card:hover { background: var(--steel-3); }
+
+.test-rating { display: flex; gap: 0.2rem; margin-bottom: 1rem; }
+.star { color: var(--yellow); font-size: 0.9rem; }
+
+.test-quote {
+  font-size: 1rem; line-height: 1.8; color: var(--offwhite);
+  margin-bottom: 1.4rem; border-left: 3px solid var(--yellow);
+  padding-left: 1rem;
+}
+
+.test-author strong {
+  font-family: 'Oswald', sans-serif; font-size: 0.92rem;
+  font-weight: 700; text-transform: uppercase; display: block;
+}
+.test-author span { font-size: 0.75rem; color: var(--light-concrete); }
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--steel-3); padding: 6rem 5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  border-top: 4px solid var(--yellow);
+}
+
+.cta-left .section-title { font-size: clamp(2rem, 3.5vw, 3rem); }
+.cta-left p { color: var(--light-concrete); margin-top: 1rem; line-height: 1.8; max-width: 460px; }
+
+.cta-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form-input {
+  background: var(--steel-4); border: 1px solid var(--steel-4);
+  color: var(--white); padding: 0.85rem 1rem;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem;
+  width: 100%; transition: border-color 0.2s;
+}
+.form-input:focus { outline: none; border-color: var(--yellow); }
+.form-input::placeholder { color: var(--concrete); }
+
+.form-select {
+  background: var(--steel-4); border: 1px solid var(--steel-4);
+  color: var(--white); padding: 0.85rem 1rem;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem;
+  width: 100%; cursor: pointer; transition: border-color 0.2s;
+}
+.form-select:focus { outline: none; border-color: var(--yellow); }
+.form-select option { background: var(--steel-4); }
+
+.form-textarea {
+  background: var(--steel-4); border: 1px solid var(--steel-4);
+  color: var(--white); padding: 0.85rem 1rem;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem;
+  width: 100%; resize: vertical; min-height: 90px; transition: border-color 0.2s;
+}
+.form-textarea:focus { outline: none; border-color: var(--yellow); }
+.form-textarea::placeholder { color: var(--concrete); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--steel); border-top: 3px solid var(--yellow);
+  padding: 4rem 5rem 2rem;
+}
+
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem; padding-bottom: 3rem;
+  border-bottom: 1px solid var(--steel-3);
+}
+
+.footer-brand-logo {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.footer-brand-logo .icon { font-size: 1.5rem; }
+.footer-brand-logo .txt {
+  font-family: 'Oswald', sans-serif; font-size: 1.1rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--white);
+}
+.footer-brand-logo .txt span { color: var(--yellow); }
+
+.footer-brand p { font-size: 0.85rem; color: var(--light-concrete); line-height: 1.8; max-width: 280px; }
+
+.footer-col h4 {
+  font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--yellow);
+  margin-bottom: 1.2rem;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.55rem; }
+.footer-col a {
+  color: var(--light-concrete); text-decoration: none;
+  font-size: 0.85rem; transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--white); }
+
+.footer-contact-item {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  margin-bottom: 0.7rem; font-size: 0.85rem; color: var(--light-concrete);
+}
+.footer-contact-item strong { color: var(--white); font-size: 0.72rem;
+  font-family: 'Oswald', sans-serif; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; min-width: 40px;
+}
+
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem; color: var(--concrete);
+}
+.footer-bottom a { color: var(--concrete); text-decoration: none; }
+.footer-bottom a:hover { color: var(--yellow); }
+
+/* ── KEYFRAMES ── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes machineFade {
+  from { opacity: 0; transform: translateY(-50%) scale(0.9); }
+  to { opacity: 0.12; transform: translateY(-50%) scale(1); }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+.reveal-d5 { transition-delay: 0.5s; }
+.reveal-d6 { transition-delay: 0.55s; }
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  background: none; border: none; cursor: pointer;
+  padding: 0.6rem; margin-left: auto; margin-right: 1rem;
+  z-index: 300;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--yellow); transition: all 0.3s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav drawer */
+.mobile-nav {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--steel); z-index: 250;
+  flex-direction: column;
+  padding: 5rem 2rem 2rem;
+  gap: 0;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.mobile-nav.open { transform: translateX(0); }
+
+.mobile-nav a {
+  display: block; padding: 1.1rem 0;
+  font-family: 'Oswald', sans-serif; font-size: 1.4rem;
+  font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--white); text-decoration: none;
+  border-bottom: 1px solid var(--steel-3);
+  transition: color 0.2s, padding-left 0.2s;
+}
+.mobile-nav a:hover { color: var(--yellow); padding-left: 0.5rem; }
+
+.mobile-nav-footer {
+  margin-top: auto; padding-top: 2rem;
+}
+.mobile-nav-footer a {
+  display: block;
+  font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600;
+  color: var(--yellow); text-decoration: none; border: none; padding: 0.5rem 0;
+}
+.mobile-nav-footer .mobile-quote {
+  display: block; margin-top: 1rem;
+  background: var(--yellow); color: var(--steel);
+  padding: 1rem; text-align: center;
+  font-family: 'Oswald', sans-serif; font-size: 1rem;
+  font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  border: none; cursor: pointer; width: 100%;
+}
+
+/* ── STICKY MOBILE CALL BAR ── */
+.mobile-call-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
+  background: var(--yellow);
+  grid-template-columns: 1fr 1fr;
+}
+.mobile-call-bar a, .mobile-call-bar button {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 1rem;
+  font-family: 'Oswald', sans-serif; font-size: 0.9rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  color: var(--steel); background: transparent;
+}
+.mobile-call-bar button {
+  background: var(--steel); color: var(--yellow);
+  border-left: 2px solid rgba(0,0,0,0.2);
+}
+
+/* ── TABLET (≤ 1024px) ── */
+@media (max-width: 1024px) {
+  nav { padding: 0; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+  .nav-hamburger { display: flex; }
+  .mobile-nav { display: flex; }
+
+  .hero { padding: 7rem 3rem 4rem; }
+
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .categories { padding: 4rem 3rem; }
+  .inventory { padding: 4rem 3rem; }
+  .why { padding: 4rem 3rem; }
+  .services-strip { padding: 4rem 3rem; }
+  .testimonials { padding: 4rem 3rem; }
+  .cta-section { padding: 4rem 3rem; gap: 3rem; }
+  footer { padding: 3rem 3rem 2rem; }
+
+  .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .why-img-main { height: 300px; }
+
+  .test-grid { grid-template-columns: 1fr 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+  .services-row { grid-template-columns: 1fr 1fr; }
+
+  .equip-card.featured-card { grid-column: span 1; }
+  .equip-card.featured-card .equip-img { height: 200px; font-size: 5.5rem; }
+  .equip-card.featured-card .equip-name { font-size: 1.35rem; }
+}
+
+/* ── MOBILE (≤ 680px) ── */
+@media (max-width: 680px) {
+  /* Nav */
+  .nav-brand { padding: 0.7rem 1rem 0.7rem 1rem; clip-path: none; padding-right: 1rem; }
+  .nav-brand-text .name { font-size: 0.92rem; }
+  .nav-brand-text .top { display: none; }
+  .nav-brand-icon { font-size: 1.3rem; margin-right: 0.4rem; }
+
+  /* Hero */
+  .hero { padding: 6rem 1.5rem 6rem; min-height: auto; }
+  .hero-machine { font-size: 40vw; opacity: 0.07; right: -5%; }
+  .hero-title { font-size: clamp(2.8rem, 12vw, 4.5rem); }
+  .hero-desc { font-size: 0.92rem; max-width: 100%; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions button { width: 100%; text-align: center; }
+  .hero-badges { flex-direction: column; gap: 1rem; }
+  .btn-yellow, .btn-outline { clip-path: none; }
+
+  /* Ticker */
+  .ticker-inner { animation-duration: 18s; }
+
+  /* Categories */
+  .categories { padding: 3rem 1.5rem; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-icon { font-size: 1.8rem; }
+  .cat-name { font-size: 0.78rem; }
+  .cat-count { font-size: 0.65rem; }
+
+  /* Inventory */
+  .inventory { padding: 3rem 1.5rem; }
+  .inventory-toolbar { flex-direction: column; align-items: flex-start; }
+  .filter-row { gap: 0.3rem; }
+  .filter-btn { padding: 0.4rem 0.7rem; font-size: 0.65rem; }
+  .equip-grid { grid-template-columns: 1fr; background: transparent; gap: 1rem; }
+  .equip-card { border: 1px solid var(--steel-4); }
+  .equip-specs { grid-template-columns: repeat(3, 1fr); }
+  .equip-spec { padding: 0.4rem 0.5rem; }
+  .equip-spec label { font-size: 0.55rem; }
+  .equip-spec value { font-size: 0.78rem; }
+  .equip-footer { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+  .equip-actions { width: 100%; }
+  .equip-btn, .equip-btn-ghost { flex: 1; text-align: center; }
+
+  /* Why */
+  .why { padding: 3rem 1.5rem; }
+  .why-grid { gap: 2rem; }
+  .why-img-main { height: 220px; font-size: 6rem; }
+  .why-corner { bottom: -1rem; right: -0.5rem; padding: 0.9rem 1.1rem; }
+  .why-corner .num { font-size: 1.6rem; }
+
+  /* Services */
+  .services-strip { padding: 3rem 1.5rem; }
+  .services-row { grid-template-columns: 1fr; gap: 1px; }
+
+  /* Brands */
+  .brands { padding: 2.5rem 1.5rem; }
+  .brands-inner { flex-direction: column; gap: 1rem; }
+  .brands-list { gap: 1rem; }
+  .brand-name { font-size: 0.85rem; }
+
+  /* Testimonials */
+  .testimonials { padding: 3rem 1.5rem; }
+  .test-grid { grid-template-columns: 1fr; }
+
+  /* Contact */
+  .cta-section { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Footer */
+  footer { padding: 3rem 1.5rem 6rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+  /* Show sticky call bar */
+  .mobile-call-bar { display: grid; }
+
+  /* Section padding */
+  section { padding: 3rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <span class="nav-brand-icon">🏗️</span>
+    <div class="nav-brand-text">
+      <span class="top">Est. 1989</span>
+      <span class="name">George's Heavy Equipment</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#inventory">Inventory</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why George's</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:18005554647">📞 1-800-555-GEORGE</a>
+    <button class="nav-quote" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#inventory" class="mobile-nav-link">Inventory</a>
+  <a href="#categories" class="mobile-nav-link">Categories</a>
+  <a href="#services" class="mobile-nav-link">Services</a>
+  <a href="#why" class="mobile-nav-link">Why George's</a>
+  <a href="#contact" class="mobile-nav-link">Contact</a>
+  <div class="mobile-nav-footer">
+    <a href="tel:18005554647">📞 1-800-555-GEORGE</a>
+    <button class="mobile-quote" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); document.getElementById('mobileNav').classList.remove('open'); document.getElementById('hamburger').classList.remove('open');">Get a Free Quote →</button>
+  </div>
+</div>
+
+<!-- STICKY MOBILE CALL BAR -->
+<div class="mobile-call-bar">
+  <a href="tel:18005554647">📞 Call George</a>
+  <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">✉️ Get a Quote</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-machine">🚧</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Serving Ontario &amp; Beyond Since 1989</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="outline">Heavy</span>
+      <span class="line2">Equipment</span>
+      <span style="color:var(--white); display:block;">Done Right.</span>
+    </h1>
+    <p class="hero-desc">From excavators to crushers — new, used, and rental heavy equipment for construction, mining, forestry, and road work. George's has the iron you need to get the job done.</p>
+    <div class="hero-actions">
+      <button class="btn-yellow" onclick="document.getElementById('inventory').scrollIntoView({behavior:'smooth'})">Browse Equipment</button>
+      <button class="btn-outline">📞 &nbsp;Call George Direct</button>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge-item">
+        <span class="badge-icon">✅</span>
+        <div class="badge-text"><strong>35+ Years</strong>in business</div>
+      </div>
+      <div class="hero-badge-item">
+        <span class="badge-icon">🔧</span>
+        <div class="badge-text"><strong>On-Site</strong>service & repair</div>
+      </div>
+      <div class="hero-badge-item">
+        <span class="badge-icon">🚛</span>
+        <div class="badge-text"><strong>Canada-Wide</strong>delivery available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>New Inventory Arriving Weekly</span><span class="dot">◆</span>
+    <span>Cat · Komatsu · John Deere · Volvo · Hitachi · Liebherr · Doosan</span><span class="dot">◆</span>
+    <span>Financing Available OAC</span><span class="dot">◆</span>
+    <span>Rent · Buy · Trade</span><span class="dot">◆</span>
+    <span>On-Site Service Across Ontario</span><span class="dot">◆</span>
+    <span>Call George Direct: 1-800-555-GEORGE</span><span class="dot">◆</span>
+    <span>New Inventory Arriving Weekly</span><span class="dot">◆</span>
+    <span>Cat · Komatsu · John Deere · Volvo · Hitachi · Liebherr · Doosan</span><span class="dot">◆</span>
+    <span>Financing Available OAC</span><span class="dot">◆</span>
+    <span>Rent · Buy · Trade</span><span class="dot">◆</span>
+    <span>On-Site Service Across Ontario</span><span class="dot">◆</span>
+    <span>Call George Direct: 1-800-555-GEORGE</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="section-header">
+    <div class="section-label reveal"><span>Shop by Type</span></div>
+    <h2 class="section-title reveal reveal-d1">Find Your <em>Machine</em></h2>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card reveal reveal-d1">
+      <span class="cat-icon">🦺</span>
+      <div class="cat-name">Excavators</div>
+      <div class="cat-count">24 units in stock</div>
+    </div>
+    <div class="cat-card reveal reveal-d2">
+      <span class="cat-icon">🚧</span>
+      <div class="cat-name">Bulldozers</div>
+      <div class="cat-count">18 units in stock</div>
+    </div>
+    <div class="cat-card reveal reveal-d3">
+      <span class="cat-icon">🏗️</span>
+      <div class="cat-name">Cranes</div>
+      <div class="cat-count">9 units in stock</div>
+    </div>
+    <div class="cat-card reveal reveal-d4">
+      <span class="cat-icon">🚜</span>
+      <div class="cat-name">Wheel Loaders</div>
+      <div class="cat-count">21 units in stock</div>
+    </div>
+    <div class="cat-card reveal reveal-d5">
+      <span class="cat-icon">🛣️</span>
+      <div class="cat-name">Motor Graders</div>
+      <div class="cat-count">12 units in stock</div>
+    </div>
+    <div class="cat-card reveal reveal-d6">
+      <span class="cat-icon">🪨</span>
+      <div class="cat-name">Compactors</div>
+      <div class="cat-count">15 units in stock</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVENTORY -->
+<section class="inventory" id="inventory">
+  <div class="inventory-toolbar">
+    <div>
+      <div class="section-label reveal"><span>Current Stock</span></div>
+      <h2 class="section-title reveal reveal-d1">Available <em>Equipment</em></h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:0.7rem; align-items:flex-end;">
+      <div class="filter-row reveal">
+        <button class="filter-btn active" onclick="setFilter(this)">All</button>
+        <button class="filter-btn" onclick="setFilter(this)">Excavators</button>
+        <button class="filter-btn" onclick="setFilter(this)">Dozers</button>
+        <button class="filter-btn" onclick="setFilter(this)">Loaders</button>
+        <button class="filter-btn" onclick="setFilter(this)">Cranes</button>
+        <button class="filter-btn" onclick="setFilter(this)">Graders</button>
+      </div>
+      <div style="display:flex; gap:0.7rem; align-items:center;" class="reveal">
+        <label style="font-size:0.75rem;color:var(--light-concrete);font-family:'Oswald',sans-serif;letter-spacing:0.1em;text-transform:uppercase;">Sort:</label>
+        <select class="sort-select">
+          <option>Newest First</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Hours: Low to High</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="equip-grid">
+
+    <!-- FEATURED CARD -->
+    <div class="equip-card featured-card reveal">
+      <div class="equip-badge-new">⭐ Featured Unit</div>
+      <div class="equip-img" style="background:linear-gradient(135deg,#1c1f10,#2a2f10);">
+        <div class="equip-img-bg"></div>🦺
+      </div>
+      <div class="equip-body">
+        <div class="equip-type">Excavator · 2022 · Certified Pre-Owned</div>
+        <div class="equip-name">Caterpillar 390F L Hydraulic Excavator</div>
+        <div class="equip-specs">
+          <div class="equip-spec"><label>Hours</label><value>3,204 hrs</value></div>
+          <div class="equip-spec"><label>Engine</label><value>Cat C18 — 513 HP</value></div>
+          <div class="equip-spec"><label>Op. Weight</label><value>90,000 kg</value></div>
+        </div>
+        <div class="equip-footer">
+          <div class="equip-price-wrap">
+            <div class="equip-price">$1,240,000 <small>CAD · Financing Available</small></div>
+          </div>
+          <div class="equip-actions">
+            <button class="equip-btn">Request Info</button>
+            <button class="equip-btn-ghost">Specs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="equip-card reveal reveal-d1">
+      <div class="equip-badge-sale">🔥 Reduced</div>
+      <div class="equip-img" style="background:linear-gradient(135deg,#1a1612,#2a2218);">
+        <div class="equip-img-bg"></div>🚧
+      </div>
+      <div class="equip-body">
+        <div class="equip-type">Dozer · 2020</div>
+        <div class="equip-name">Komatsu D375A-8 Crawler Dozer</div>
+        <div class="equip-specs">
+          <div class="equip-spec"><label>Hours</label><value>5,840 hrs</value></div>
+          <div class="equip-spec"><label>Engine</label><value>605 HP</value></div>
+          <div class="equip-spec"><label>Blade Cap.</label><value>31.0 m³</value></div>
+        </div>
+        <div class="equip-footer">
+          <div class="equip-price-wrap">
+            <div class="equip-price">$680,000 <small>CAD</small></div>
+          </div>
+          <div class="equip-actions">
+            <button class="equip-btn">Request Info</button>
+            <button class="equip-btn-ghost">Specs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="equip-card reveal reveal-d2">
+      <div class="equip-img" style="background:linear-gradient(135deg,#121820,#182030);">
+        <div class="equip-img-bg"></div>🏗️
+      </div>
+      <div class="equip-body">
+        <div class="equip-type">Crane · 2021 · New Arrival</div>
+        <div class="equip-name">Liebherr LTM 1200-5.1 Mobile Crane</div>
+        <div class="equip-specs">
+          <div class="equip-spec"><label>Hours</label><value>1,980 hrs</value></div>
+          <div class="equip-spec"><label>Cap.</label><value>200 tonnes</value></div>
+          <div class="equip-spec"><label>Boom</label><value>72 m</value></div>
+        </div>
+        <div class="equip-footer">
+          <div class="equip-price-wrap">
+            <div class="equip-price">$2,100,000 <small>CAD</small></div>
+          </div>
+          <div class="equip-actions">
+            <button class="equip-btn">Request Info</button>
+            <button class="equip-btn-ghost">Specs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="equip-card reveal">
+      <div class="equip-badge-new">New Stock</div>
+      <div class="equip-img" style="background:linear-gradient(135deg,#141c12,#1e2a18);">
+        <div class="equip-img-bg"></div>🚜
+      </div>
+      <div class="equip-body">
+        <div class="equip-type">Wheel Loader · 2023</div>
+        <div class="equip-name">Volvo L350H Wheel Loader</div>
+        <div class="equip-specs">
+          <div class="equip-spec"><label>Hours</label><value>940 hrs</value></div>
+          <div class="equip-spec"><label>Engine</label><value>476 HP</value></div>
+          <div class="equip-spec"><label>Payload</label><value>20,500 kg</value></div>
+        </div>
+        <div class="equip-footer">
+          <div class="equip-price-wrap">
+            <div class="equip-price">$895,000 <small>CAD</small></div>
+          </div>
+          <div class="equip-actions">
+            <button class="equip-btn">Request Info</button>
+            <button class="equip-btn-ghost">Specs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="equip-card reveal reveal-d1">
+      <div class="equip-img" style="background:linear-gradient(135deg,#1a1412,#2a1e18);">
+        <div class="equip-img-bg"></div>🛣️
+      </div>
+      <div class="equip-body">
+        <div class="equip-type">Motor Grader · 2019</div>
+        <div class="equip-name">John Deere 872G Motor Grader</div>
+        <div class="equip-specs">
+          <div class="equip-spec"><label>Hours</label><value>7,210 hrs</value></div>
+          <div class="equip-spec"><label>Engine</label><value>275 HP</value></div>
+          <div class="equip-spec"><label>Blade</label><value>4.9 m</value></div>
+        </div>
+        <div class="equip-footer">
+          <div class="equip-price-wrap">
+            <div class="equip-price">$345,000 <small>CAD</small></div>
+          </div>
+          <div class="equip-actions">
+            <button class="equip-btn">Request Info</button>
+            <button class="equip-btn-ghost">Specs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="equip-card reveal reveal-d2">
+      <div class="equip-badge-sale">Rental Available</div>
+      <div class="equip-img" style="background:linear-gradient(135deg,#181818,#222222);">
+        <div class="equip-img-bg"></div>🪨
+      </div>
+      <div class="equip-body">
+        <div class="equip-type">Compactor · 2021</div>
+        <div class="equip-name">Dynapac CA6000D Soil Compactor</div>
+        <div class="equip-specs">
+          <div class="equip-spec"><label>Hours</label><value>3,450 hrs</value></div>
+          <div class="equip-spec"><label>Engine</label><value>209 HP</value></div>
+          <div class="equip-spec"><label>Drum W.</label><value>2,130 mm</value></div>
+        </div>
+        <div class="equip-footer">
+          <div class="equip-price-wrap">
+            <div class="equip-price">$218,000 <small>CAD · or Rent</small></div>
+          </div>
+          <div class="equip-actions">
+            <button class="equip-btn">Request Info</button>
+            <button class="equip-btn-ghost">Specs</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+    <button class="btn-yellow">View All 99+ Units →</button>
+  </div>
+</section>
+
+<!-- WHY GEORGE'S -->
+<section class="why" id="why">
+  <div class="section-label reveal"><span>Why Choose Us</span></div>
+  <h2 class="section-title reveal reveal-d1">George's <em>Difference</em></h2>
+  <div class="why-grid">
+    <div class="why-visual reveal">
+      <div class="why-img-main">🚧</div>
+      <div class="why-corner">
+        <span class="num">35+</span>
+        <span class="lbl">Years Serving<br>Ontario</span>
+      </div>
+    </div>
+    <div class="why-points reveal reveal-d2">
+      <div class="why-point">
+        <div class="why-point-num">01</div>
+        <div class="why-point-body">
+          <div class="why-point-title">Honest Deals — No Games</div>
+          <p class="why-point-desc">George started this business with a handshake and that's still how we operate. Transparent pricing, fair trade-in values, and zero hidden fees. What you see is what you get.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-num">02</div>
+        <div class="why-point-body">
+          <div class="why-point-title">We Come to You</div>
+          <p class="why-point-desc">Our licensed mechanics run mobile service rigs across Ontario. We'll do your preventive maintenance, unscheduled repairs, and full overhauls on-site so your downtime stays near zero.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-num">03</div>
+        <div class="why-point-body">
+          <div class="why-point-title">Parts in Stock, Not on Order</div>
+          <p class="why-point-desc">We stock over 12,000 OEM and aftermarket parts for Cat, Komatsu, Deere, Volvo, and more. Most parts ship same day — because a machine waiting on parts is money lost.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-point-num">04</div>
+        <div class="why-point-body">
+          <div class="why-point-title">Flexible Rent-to-Own</div>
+          <p class="why-point-desc">Not ready to buy? Our rent-to-own programs let you put every rental dollar toward purchase. Talk to us and we'll build a plan around your cash flow, not ours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-strip" id="services">
+  <div class="section-label reveal"><span>What We Offer</span></div>
+  <h2 class="section-title reveal reveal-d1">Full-Service <em>Support</em></h2>
+  <div class="services-row">
+    <div class="srv reveal">
+      <span class="srv-icon">🔧</span>
+      <div class="srv-title">Service & Repair</div>
+      <p class="srv-desc">Factory-certified technicians. Mobile units across Ontario. Hydraulics, undercarriage, electronics, powertrains — we fix it all.</p>
+    </div>
+    <div class="srv reveal reveal-d1">
+      <span class="srv-icon">🔩</span>
+      <div class="srv-title">Parts Department</div>
+      <p class="srv-desc">12,000+ parts in stock. OEM and aftermarket. Overnight shipping provincewide. Our parts counter runs 6 days a week.</p>
+    </div>
+    <div class="srv reveal reveal-d2">
+      <span class="srv-icon">📋</span>
+      <div class="srv-title">Inspections & Appraisals</div>
+      <p class="srv-desc">Full mechanical and structural inspections with detailed reports. Know exactly what you're buying — or what your machine is worth.</p>
+    </div>
+    <div class="srv reveal reveal-d3">
+      <span class="srv-icon">🚛</span>
+      <div class="srv-title">Transport & Delivery</div>
+      <p class="srv-desc">We handle lowbed permits, route planning, and pilot cars. Equipment delivered to your job site anywhere in Canada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands">
+  <div class="brands-inner">
+    <div class="brands-label">Brands We Carry &amp; Service</div>
+    <div class="brands-list">
+      <span class="brand-name">Caterpillar</span>
+      <span class="brand-name">Komatsu</span>
+      <span class="brand-name">John Deere</span>
+      <span class="brand-name">Volvo</span>
+      <span class="brand-name">Hitachi</span>
+      <span class="brand-name">Liebherr</span>
+      <span class="brand-name">Doosan</span>
+      <span class="brand-name">Case</span>
+      <span class="brand-name">Dynapac</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-label reveal"><span>What Contractors Say</span></div>
+  <h2 class="section-title reveal reveal-d1">Trusted by the <em>Trades</em></h2>
+
+  <div class="test-grid">
+    <div class="test-card reveal">
+      <div class="test-rating">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="test-quote">Bought two Cat 336s and a grader from George over the past three years. Every machine was exactly as described, pricing was fair, and their shop sorted a warranty issue in two days. No fuss.</div>
+      <div class="test-author">
+        <strong>Dave Kowalski</strong>
+        <span>Kowalski Earthworks · Sudbury, ON</span>
+      </div>
+    </div>
+    <div class="test-card reveal reveal-d1">
+      <div class="test-rating">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="test-quote">Their mobile service truck showed up at our remote site in the Shield, figured out the issue with the undercarriage, had the parts on hand, and had us running again by end of shift. Unreal.</div>
+      <div class="test-author">
+        <strong>Linda Tran</strong>
+        <span>Granite Ridge Construction · Timmins, ON</span>
+      </div>
+    </div>
+    <div class="test-card reveal reveal-d2">
+      <div class="test-rating">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <div class="test-quote">The rent-to-own program saved us. We needed a Liebherr crane for a 6-month project, ended up owning it, and every dollar counted toward the purchase. George's worked around our billing cycles.</div>
+      <div class="test-author">
+        <strong>Rob Sinclair</strong>
+        <span>Sinclair Steel Erectors · Barrie, ON</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="cta-left reveal">
+    <div class="section-label"><span>Get in Touch</span></div>
+    <h2 class="section-title">Ready to Find<br>Your <em>Next Machine?</em></h2>
+    <p>Tell us what you need and we'll find it — or build a rental or financing package around your job. George or one of our equipment specialists will be back to you within the hour during business hours.</p>
+    <div style="margin-top:2rem; display:flex; flex-direction:column; gap:0.7rem;">
+      <div class="footer-contact-item"><strong>Call</strong> 1-800-555-GEORGE</div>
+      <div class="footer-contact-item"><strong>Email</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4621232934212306212329342123352e23682527">[email&#160;protected]</a></div>
+      <div class="footer-contact-item"><strong>Yard</strong> 4800 Industrial Drive, North Bay, ON</div>
+      <div class="footer-contact-item"><strong>Hours</strong> Mon–Fri 7am–6pm · Sat 8am–4pm</div>
+    </div>
+  </div>
+
+  <div class="cta-form reveal reveal-d2">
+    <div class="form-row">
+      <input class="form-input" type="text" placeholder="Your Name *"/>
+      <input class="form-input" type="text" placeholder="Company Name"/>
+    </div>
+    <div class="form-row">
+      <input class="form-input" type="tel" placeholder="Phone Number *"/>
+      <input class="form-input" type="email" placeholder="Email Address"/>
+    </div>
+    <select class="form-select">
+      <option value="" disabled selected>What are you looking for?</option>
+      <option>Buy Equipment</option>
+      <option>Rent Equipment</option>
+      <option>Rent-to-Own</option>
+      <option>Service / Repair</option>
+      <option>Parts Inquiry</option>
+      <option>Trade-In Appraisal</option>
+      <option>Other</option>
+    </select>
+    <textarea class="form-textarea" placeholder="Tell us about your equipment needs, job site, or project…"></textarea>
+    <button class="btn-yellow" style="width:100%; padding:1rem; font-size:1rem;">Send Inquiry →</button>
+    <p style="font-size:0.75rem; color:var(--light-concrete); text-align:center; margin-top:0.5rem;">We typically respond within 1 business hour during operating hours.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-logo">
+        <span class="icon">🏗️</span>
+        <div class="txt">George's <span>Heavy Equipment</span></div>
+      </div>
+      <p>Family-owned and operated since 1989. We stock, sell, rent, and service heavy equipment across Ontario and ship coast to coast. If it moves dirt, we know it.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Equipment</h4>
+      <ul>
+        <li><a href="#">Excavators</a></li>
+        <li><a href="#">Bulldozers</a></li>
+        <li><a href="#">Cranes</a></li>
+        <li><a href="#">Wheel Loaders</a></li>
+        <li><a href="#">Motor Graders</a></li>
+        <li><a href="#">Compactors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Mobile Service</a></li>
+        <li><a href="#">Parts Counter</a></li>
+        <li><a href="#">Inspections</a></li>
+        <li><a href="#">Transport</a></li>
+        <li><a href="#">Financing</a></li>
+        <li><a href="#">Rent-to-Own</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><strong>Tel</strong> 1-800-555-GEORGE</div>
+      <div class="footer-contact-item"><strong>Email</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ea8d8f85988d8faa8d8f85988d8f99828fc4898b">[email&#160;protected]</a></div>
+      <div class="footer-contact-item"><strong>Yard</strong> 4800 Industrial Drive<br>North Bay, ON P1B 4Z9</div>
+      <div class="footer-contact-item"><strong>Hours</strong> M–F 7am–6pm<br>Sat 8am–4pm</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 George's Heavy Equipment Ltd. All rights reserved. · <a href="#">Privacy Policy</a> · <a href="#">Terms</a></span>
+    <span>Serving Ontario & All of Canada Since 1989 🍁</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+});
+// Close nav on link click
+mobileNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Filter tabs
+function setFilter(btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
