@@ -43,7 +43,7 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:200;display:flex;align-items:
 .mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:340;opacity:0;pointer-events:none;transition:opacity .32s}
 .mob-overlay.open{opacity:1;pointer-events:all}
 .mobile-nav a{display:block;padding:1rem 0;font-family:'Oswald',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--white);text-decoration:none;border-bottom:1px solid var(--steel-4);transition:color .15s,padding-left .15s}
-.mobile-nav a:active{color:var(--yellow)}
+.mobile-nav a:hover,.mobile-nav a:active{color:var(--yellow);padding-left:.5rem}
 .mob-nav-cta{margin-top:auto;display:flex;flex-direction:column;gap:.8rem;padding-top:2rem}
 .mob-phone{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:var(--yellow);border:none;padding:.4rem 0}
 .mob-quote-btn{background:var(--yellow);color:var(--steel);border:none;padding:1rem;width:100%;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
@@ -999,62 +999,135 @@ footer{background:var(--steel);border-top:3px solid var(--yellow);padding:4rem 5
 </footer>
 
 <script>
-// ── NAV ──
-var hamburger = document.getElementById('hamburger');
-var mobileNav  = document.getElementById('mobileNav');
-var overlay    = document.getElementById('mobOverlay');
+// ── SMOOTH SCROLL (global, available to inline onclick handlers) ──
+function goto(id){
+  var el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
 
-function openMenu(){ hamburger.classList.add('open'); mobileNav.classList.add('open'); overlay.classList.add('open'); mobileNav.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-function closeMenu(){ hamburger.classList.remove('open'); mobileNav.classList.remove('open'); overlay.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+// ── FILTER TABS (global, used by inline onclick) ──
+function setFilter(btn){
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+}
 
-hamburger.addEventListener('click', function(){ mobileNav.classList.contains('open') ? closeMenu() : openMenu(); });
-overlay.addEventListener('click', closeMenu);
-mobileNav.querySelectorAll('a').forEach(function(l){ l.addEventListener('click', closeMenu); });
-document.getElementById('mobQuote').addEventListener('click', function(){ closeMenu(); setTimeout(function(){ goto('contact'); }, 340); });
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
-
-// ── SMOOTH SCROLL ──
-function goto(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
-
-// ── FILTER TABS ──
-function setFilter(btn){ document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active'); }
-
-// ── TOGGLE FULL SPECS ──
+// ── TOGGLE FULL SPECS (global, used by inline onclick) ──
 function toggleSpecs(id, btn){
   var panel = document.getElementById(id);
-  var open  = panel.classList.toggle('open');
+  if(!panel) return;
+  var open = panel.classList.toggle('open');
   btn.classList.toggle('active', open);
   btn.textContent = open ? 'Hide Specs ▴' : 'Full Specs ▾';
 }
 
-// ── SCROLL REVEAL ──
-var ro = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+document.addEventListener('DOMContentLoaded', function(){
 
-// ── STAT COUNTERS ──
-function animateCount(el, target){
-  var start = 0; var dur = 1800; var t0 = performance.now();
-  var fmt = target >= 1000 ? function(n){ return n >= 1000 ? Math.floor(n/1000)+'k+' : n+''; } : function(n){ return n+''; };
-  (function step(now){
-    var p = Math.min((now-t0)/dur, 1);
-    var ease = 1-Math.pow(1-p,3);
-    el.textContent = fmt(Math.floor(ease*target));
-    if(p<1) requestAnimationFrame(step);
-    else el.textContent = fmt(target);
-  })(t0);
-}
-var statsObserver = new IntersectionObserver(function(entries){
-  if(entries[0].isIntersecting){
-    document.querySelectorAll('.stat-num[data-target]').forEach(function(el){
-      animateCount(el, parseInt(el.dataset.target));
-    });
-    statsObserver.disconnect();
+  // ── HAMBURGER MENU ──
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+  var overlay   = document.getElementById('mobOverlay');
+
+  if(!hamburger || !mobileNav || !overlay){
+    console.warn('GHE: mobile nav elements missing');
+    return;
   }
-}, { threshold: 0.5 });
-var statsBar = document.querySelector('.stats-bar');
-if(statsBar) statsObserver.observe(statsBar);
+
+  function openMenu(){
+    hamburger.classList.add('open');
+    mobileNav.classList.add('open');
+    overlay.classList.add('open');
+    mobileNav.setAttribute('aria-hidden','false');
+    hamburger.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu(){
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+    overlay.classList.remove('open');
+    mobileNav.setAttribute('aria-hidden','true');
+    hamburger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+
+  // Toggle on hamburger click
+  hamburger.addEventListener('click', function(){
+    mobileNav.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  // Close on overlay click
+  overlay.addEventListener('click', closeMenu);
+
+  // Close on any link inside the drawer
+  mobileNav.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Quote button inside drawer
+  var mobQuote = document.getElementById('mobQuote');
+  if(mobQuote){
+    mobQuote.addEventListener('click', function(){
+      closeMenu();
+      setTimeout(function(){ goto('contact'); }, 340);
+    });
+  }
+
+  // Escape key closes menu
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && mobileNav.classList.contains('open')) closeMenu();
+  });
+
+  // ── NAV SCROLL SHADOW ──
+  var nav = document.querySelector('nav');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 10){
+      nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.5)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  }, { passive: true });
+
+  // ── SCROLL REVEAL ──
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+
+  // ── STAT COUNTERS ──
+  function animateCount(el, target){
+    var dur = 1800;
+    var t0 = performance.now();
+    var fmt = target >= 1000
+      ? function(n){ return Math.floor(n/1000) + 'k+'; }
+      : function(n){ return n + (target > 10 ? '+' : ''); };
+    (function step(now){
+      var p    = Math.min((now - t0) / dur, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.floor(ease * target));
+      if(p < 1) requestAnimationFrame(step);
+      else el.textContent = fmt(target);
+    })(t0);
+  }
+
+  var statsBar = document.querySelector('.stats-bar');
+  if(statsBar){
+    var statsObserver = new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){
+        document.querySelectorAll('.stat-num[data-target]').forEach(function(el){
+          animateCount(el, parseInt(el.dataset.target, 10));
+        });
+        statsObserver.disconnect();
+      }
+    }, { threshold: 0.5 });
+    statsObserver.observe(statsBar);
+  }
+
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>
